@@ -6,6 +6,21 @@ copyright: "© [PaperMod Contributors](https://github.com/adityatelange/hugo-Pap
 paginate: 5
 theme: [hugo-PaperMod]
 
+
+menu:
+  main:
+    -identifier: categories
+     name: categories
+     url: /categories/
+     weight: 10
+    -identifier: tags
+     name: Tags
+     url: /tags/
+     weight: 20
+    -identifier: archives
+     name: Archives
+     url: /archives/
+     weight: 30
 # enableInlineShortcodes: true
 # enableRobotsTXT: true
 # buildDrafts: false
