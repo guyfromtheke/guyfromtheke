@@ -1,6 +1,6 @@
 ---
 title: "Archives"
 layout: "archives"
-url: "/archives/"
+url: "guyfromtheke.com/archives/"
 summary: archives
 ---
