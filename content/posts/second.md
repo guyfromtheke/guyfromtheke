@@ -1,6 +1,6 @@
 +++
 date = '2025-03-16T02:02:29+03:00'
-draft = false
+draft = true
 title = 'Second'
 tags = ["update", "blog"]
 +++
