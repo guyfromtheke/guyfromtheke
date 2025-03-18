@@ -2,17 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Introduction on Just a Guy, from Kenya</title>
-    <link>https://guyfromtheke.com/tags/introduction/</link>
+    <link>http://localhost:1313/tags/introduction/</link>
     <description>Recent content in Introduction on Just a Guy, from Kenya</description>
     <generator>Hugo -- 0.145.0</generator>
-    <language>en-us</language>
+    <language>en</language>
+    <copyright>PaperMod Contributors</copyright>
     <lastBuildDate>Sun, 16 Mar 2025 01:45:05 +0300</lastBuildDate>
-    <atom:link href="https://guyfromtheke.com/tags/introduction/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/introduction/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Welcome to my website :)</title>
-      <link>https://guyfromtheke.com/posts/first/</link>
+      <link>http://localhost:1313/posts/first/</link>
       <pubDate>Sun, 16 Mar 2025 01:45:05 +0300</pubDate>
-      <guid>https://guyfromtheke.com/posts/first/</guid>
+      <guid>http://localhost:1313/posts/first/</guid>
       <description>&lt;h1 id=&#34;this-is-a-heading-one&#34;&gt;This is a heading one&lt;/h1&gt;
 &lt;h2 id=&#34;this-is-a-heading-two&#34;&gt;This is a heading two&lt;/h2&gt;
 &lt;p&gt;this is a paragraph&lt;/p&gt;</description>
