@@ -9,16 +9,16 @@ theme: PaperMod
 
 params:
   homeInfoParams:
-    Title: "@guyfromtheke"
+    Title: "I'm @guyfromtheke 🇰🇪"
     Content: "Welcome to my corner of the internet."
   socialIcons:
-    - name: "twitter"
+    - name: twitter
       url: "https://x.com/guyfromtheke"
-    - name: "github"
+    - name: github
       url: "https://github.com/guyfromtheke"
-    - name: "linkedin"
+    - name: linkedin
       url: "https://www.linkedin.com/in/duncan-njoroge/"
-    -name: "reddit"
+    - name: reddit
       url: "https://www.reddit.com/user/guyfromtheke"
   cover:
     linkFullImages: true
