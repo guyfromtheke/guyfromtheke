@@ -2,41 +2,41 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Just a Guy, from Kenya</title>
-    <link>http://localhost:1313/</link>
+    <link>https://guyfromtheke.com/</link>
     <description>Recent content on Just a Guy, from Kenya</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 16 Mar 2025 02:02:29 +0300</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://guyfromtheke.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Second</title>
-      <link>http://localhost:1313/posts/second/</link>
+      <link>https://guyfromtheke.com/posts/second/</link>
       <pubDate>Sun, 16 Mar 2025 02:02:29 +0300</pubDate>
-      <guid>http://localhost:1313/posts/second/</guid>
+      <guid>https://guyfromtheke.com/posts/second/</guid>
       <description>&lt;h2 id=&#34;this-is-my-second-post&#34;&gt;This is my second Post&lt;/h2&gt;
 &lt;p&gt;Well , like i said , this is my second post!&lt;/p&gt;</description>
     </item>
     <item>
       <title>Welcome to my website :)</title>
-      <link>http://localhost:1313/posts/first/</link>
+      <link>https://guyfromtheke.com/posts/first/</link>
       <pubDate>Sun, 16 Mar 2025 01:45:05 +0300</pubDate>
-      <guid>http://localhost:1313/posts/first/</guid>
+      <guid>https://guyfromtheke.com/posts/first/</guid>
       <description>&lt;h1 id=&#34;this-is-a-heading-one&#34;&gt;This is a heading one&lt;/h1&gt;
 &lt;h2 id=&#34;this-is-a-heading-two&#34;&gt;This is a heading two&lt;/h2&gt;
 &lt;p&gt;this is a paragraph&lt;/p&gt;</description>
     </item>
     <item>
       <title>About Me</title>
-      <link>http://localhost:1313/about/</link>
+      <link>https://guyfromtheke.com/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/about/</guid>
+      <guid>https://guyfromtheke.com/about/</guid>
       <description>About me and this site</description>
     </item>
     <item>
       <title>Tags</title>
-      <link>http://localhost:1313/tags/</link>
+      <link>https://guyfromtheke.com/tags/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/</guid>
+      <guid>https://guyfromtheke.com/tags/</guid>
       <description>tags</description>
     </item>
   </channel>
