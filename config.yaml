@@ -10,14 +10,14 @@ theme: PaperMod
 params:
   homeInfoParams:
     Title: "Hello Stranger"
-    Content: Welcome to my blog. Here you'll find a lot of cool information about a lot of cool stuff.
+    Content: Welcome to my corner of the internet.
   socialIcons:
-    - name: facebook
-      url: "https://facebook.com/"
     - name: twitter
-      url: "https://twitter.com/"
+      url: "https://x.com/guyfromtheke"
     - name: github
-      url: "https://github.com/"
+      url: "https://github.com/guyfromtheke"
+    - name: linkedin
+      url: "https://www.linkedin.com/in/duncan-njoroge/"
 
   cover:
     linkFullImages: true
