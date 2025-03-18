@@ -2,7 +2,7 @@
 title: "About Me"
 layout: "page"
 url: "/about/"
-summary: "About me and this site"
+summary: "About Guy From the Ke"
 menu:
   main:
     weight: 10
@@ -11,11 +11,11 @@ menu:
 
 # Welcome to My Personal Corner on the Web
 
-Hello there! I'm the creator and owner of this site. This is where I share my thoughts, experiences, and knowledge with the world.
+Hello there! I'm the @guyfrotmheke, also known as Duncan Njoroge, Infrastructure Engineer during the day, Homelabbing during my free time and wannabe musician if i can get a hold of my dusty guitar. :)
 
 ## Who Am I?
 
-I'm passionate about technology, writing, and connecting with like-minded individuals. My journey has taken me through various fields and experiences, each shaping my perspective and contributing to who I am today.
+I'm passionate about all things Compute Infrastructure, Kubernetes, AI, Africa, tech trends, and now writing, ultimately connecting with like-minded individuals. My journey has taken me through various fields and experiences, each shaping my perspective and contributing to who I am today.
 
 ## What to Expect Here
 
@@ -23,8 +23,8 @@ On this site, you'll find:
 
 - Articles on topics I'm passionate about
 - Personal reflections and insights
-- Showcases of projects I've worked on
-- Resources I find valuable and want to share
+- Showcases of homelab projects I've worked on
+- Resources I find valuable and want to share.
 
 ## Let's Connect
 
@@ -34,5 +34,5 @@ Thank you for visiting, and I hope you enjoy your time exploring the content I'v
 
 ---
 
-*This is a placeholder about page. Feel free to customize it with real information about yourself, your interests, and what visitors can expect from your site.*
+
 
