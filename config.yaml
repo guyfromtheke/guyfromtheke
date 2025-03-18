@@ -9,7 +9,7 @@ theme: PaperMod
 
 params:
   homeInfoParams:
-    Title: "Hello Stranger"
+    Title: "@guyfromtheke"
     Content: "Welcome to my corner of the internet."
   socialIcons:
     - name: "twitter"
@@ -18,7 +18,8 @@ params:
       url: "https://github.com/guyfromtheke"
     - name: "linkedin"
       url: "https://www.linkedin.com/in/duncan-njoroge/"
-
+    -name: "reddit"
+      url: "https://www.reddit.com/user/guyfromtheke"
   cover:
     linkFullImages: true
 
