@@ -8,6 +8,7 @@ pagination:
 theme: PaperMod
 
 params:
+  comments: true
   homeInfoParams:
     Title: "I'm @guyfromtheke 🇰🇪"
     Content: "Welcome to my corner of the internet."

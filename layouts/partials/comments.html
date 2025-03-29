@@ -1,0 +1,43 @@
+<!-- 
+    UTTERANCES COMMENT SYSTEM SETUP
+    ===============================
+    
+    This partial implements the utterances commenting system which uses GitHub issues for comments.
+    
+    TO SET UP:
+    1. Create a GitHub repository where you want to store the comments (can be your website repo or a dedicated one)
+    2. Install the utterances app on your GitHub repo: https://github.com/apps/utterances
+    3. Update the "repo" attribute below with your GitHub username and repository name in the format: username/repo-name
+    4. Choose a theme that matches your website (options: github-light, github-dark, preferred-color-scheme, 
+       github-dark-orange, icy-dark, dark-blue, photon-dark, boxy-light)
+    5. Ensure you've enabled comments in your config.yaml:
+       params:
+         comments: true
+-->
+
+<script src="https://utteranc.es/client.js"
+        repo="CHANGE-THIS-TO-YOUR-GITHUB-USERNAME/REPOSITORY-NAME"
+        issue-term="pathname"
+        label="comment"
+        theme="preferred-color-scheme"
+        crossorigin="anonymous"
+        async>
+</script>
+
+<!-- 
+    CONFIGURATION OPTIONS:
+    
+    issue-term: How utterances will map blog posts to GitHub issues
+      Options: pathname, url, title, og:title, [specific issue number], [specific term]
+    
+    label: The label that will be assigned to issues created by utterances
+    
+    theme: The color theme (see options in the setup instructions above)
+    
+    TROUBLESHOOTING:
+    - Make sure you've installed the utterances GitHub app on your repository
+    - Verify the repo name follows the format: username/repo-name
+    - Ensure the repository is public
+    - Comments won't appear in local development - only on the live site
+-->
+
