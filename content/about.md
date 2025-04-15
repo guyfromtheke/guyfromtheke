@@ -11,7 +11,7 @@ menu:
 
 # Welcome to My Personal Corner on the Web
 
-Hello there! I'm the @guyfrotmheke, also known as Duncan Njoroge, Infrastructure Engineer during the day, Homelabbing during my free time and wannabe musician if i can get a hold of my dusty guitar. :)
+Hello there! I'm the @guyfromtheke, also known as Duncan Njoroge, Infrastructure Engineer during the day, Homelabbing during my free time and wannabe musician if i can get a hold of my dusty guitar(s?). :)
 
 ## Who Am I?
 
@@ -21,9 +21,9 @@ I'm passionate about all things Compute Infrastructure, Kubernetes, AI, Africa, 
 
 On this site, you'll find:
 
-- Articles on topics I'm passionate about
-- Personal reflections and insights
-- Showcases of homelab projects I've worked on
+- Articles on topics I'm passionate about.
+- Personal reflections and insights.
+- Showcases of homelab projects I've worked on.
 - Resources I find valuable and want to share.
 
 ## Let's Connect

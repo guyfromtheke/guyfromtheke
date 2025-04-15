@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Introduction on Just a Guy, from Kenya</title>
-    <link>https://www.guyfromtheke.com/tags/introduction/</link>
+    <link>http://localhost:1313/tags/introduction/</link>
     <description>Recent content in Introduction on Just a Guy, from Kenya</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en</language>
     <copyright>PaperMod Contributors</copyright>
     <lastBuildDate>Sun, 16 Mar 2025 01:45:05 +0300</lastBuildDate>
-    <atom:link href="https://www.guyfromtheke.com/tags/introduction/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/introduction/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>My Website, finally! :)</title>
-      <link>https://www.guyfromtheke.com/posts/first/</link>
+      <link>http://localhost:1313/posts/first/</link>
       <pubDate>Sun, 16 Mar 2025 01:45:05 +0300</pubDate>
-      <guid>https://www.guyfromtheke.com/posts/first/</guid>
+      <guid>http://localhost:1313/posts/first/</guid>
       <description>&lt;h1 id=&#34;kinda-finally-did-it-&#34;&gt;Kinda finally did it ?&lt;/h1&gt;
 &lt;p&gt;So over the past few weeks I have been working on my homelab, and I have learnt sooo much along the way, and I figured, the best way to post about it was to write about it. So I wrote an article on linkedln &lt;a href=&#34;https://www.linkedin.com/pulse/project-home-lab-part-1-duncan-njoroge-k6roc/?trackingId=xvkKya%2FfRE%2BFavksulcKxw%3D%3D&#34;&gt;https://www.linkedin.com/pulse/project-home-lab-part-1-duncan-njoroge-k6roc/?trackingId=xvkKya%2FfRE%2BFavksulcKxw%3D%3D&lt;/a&gt; Which elicited a lot of interest. But I also not only wanted to document it there, I wanted to be able to share it to the world, so that when they search for something related to &amp;quot; how do I begin a homelab, they will find some footing.&lt;/p&gt;</description>
     </item>
