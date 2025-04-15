@@ -9,7 +9,7 @@ menu:
     title: "About"
 ---
 
-# Welcome to My Personal Corner on the Web
+# Welcome to My Personal Corner on the internet.
 
 Hello there! I'm the @guyfromtheke, also known as Duncan Njoroge, Infrastructure Engineer during the day, Homelabbing during my free time and wannabe musician if i can get a hold of my dusty guitar(s?). :)
 
