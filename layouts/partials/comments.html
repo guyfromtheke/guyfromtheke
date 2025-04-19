@@ -1,3 +1,19 @@
+{{- /* Comments area start */ -}}
+{{- if site.Params.comments -}}
+<div class="comments">
+    <!-- Utterances comment system -->
+    <script src="https://utteranc.es/client.js"
+            repo="guyfromtheke/guyfromtheke"
+            issue-term="pathname"
+            label="comment"
+            theme="preferred-color-scheme"
+            crossorigin="anonymous"
+            async>
+    </script>
+</div>
+{{- end }}
+{{- /* Comments area end */ -}}
+
 <!-- 
     UTTERANCES COMMENT SYSTEM SETUP
     ===============================
@@ -14,16 +30,6 @@
        params:
          comments: true
 -->
-
-<script src="https://utteranc.es/client.js"
-        repo="CHANGE-THIS-TO-YOUR-GITHUB-USERNAME/REPOSITORY-NAME"
-        issue-term="pathname"
-        label="comment"
-        theme="preferred-color-scheme"
-        crossorigin="anonymous"
-        async>
-</script>
-
 <!-- 
     CONFIGURATION OPTIONS:
     
