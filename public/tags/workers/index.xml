@@ -1,62 +1,29 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Workers on Just a Guy, from Kenya</title>
-    <link>http://localhost:1313/tags/workers/</link>
-    <description>Recent content in Workers on Just a Guy, from Kenya</description>
-    <generator>Hugo -- 0.145.0</generator>
-    <language>en</language>
-    <copyright>PaperMod Contributors</copyright>
-    <lastBuildDate>Mon, 07 Apr 2025 22:54:51 +0300</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/workers/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Running Local Cloudflare Workers to Gather News Information - Part 3</title>
-      <link>http://localhost:1313/posts/running-local-cloudflare-workers-news-part3/</link>
-      <pubDate>Mon, 07 Apr 2025 22:54:51 +0300</pubDate>
-      <guid>http://localhost:1313/posts/running-local-cloudflare-workers-news-part3/</guid>
-      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;In the &lt;a href=&#34;http://localhost:1313/posts/running-local-cloudflare-workers-news-part1&#34;&gt;first part&lt;/a&gt; of this series, we explored the basics of Cloudflare Workers and set up our project. The &lt;a href=&#34;http://localhost:1313/posts/running-local-cloudflare-workers-news-part2&#34;&gt;second part&lt;/a&gt; covered core implementation details like cookie management and article parsing.&lt;/p&gt;
-&lt;p&gt;Now, in this final installment, we&amp;rsquo;ll dive into the advanced features that make our news scraping worker robust and maintainable:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Multiple pattern matching techniques for resilient scraping&lt;/li&gt;
-&lt;li&gt;Comprehensive debugging endpoints&lt;/li&gt;
-&lt;li&gt;Deployment strategies and maintenance considerations&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;multiple-pattern-matching-for-robust-scraping&#34;&gt;Multiple Pattern Matching for Robust Scraping&lt;/h2&gt;
-&lt;p&gt;One of the biggest challenges in web scraping is handling website changes. News sites frequently update their layouts and HTML structure, which can break simple scraping approaches. To build a resilient solution, I implemented a multi-tiered approach to article extraction.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Running Local Cloudflare Workers to Gather News Information - Part 2</title>
-      <link>http://localhost:1313/posts/running-local-cloudflare-workers-news-part2/</link>
-      <pubDate>Mon, 07 Apr 2025 22:53:51 +0300</pubDate>
-      <guid>http://localhost:1313/posts/running-local-cloudflare-workers-news-part2/</guid>
-      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;In &lt;a href=&#34;http://localhost:1313/posts/running-local-cloudflare-workers-news-part1&#34;&gt;Part 1&lt;/a&gt;, we covered the basics of Cloudflare Workers and set up our project. Now, let&amp;rsquo;s dive into the core implementation details that make our news gathering worker function.&lt;/p&gt;
-&lt;p&gt;This post focuses on three crucial aspects:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Cookie management for authenticated access&lt;/li&gt;
-&lt;li&gt;Article fetching and parsing techniques&lt;/li&gt;
-&lt;li&gt;Error handling and debugging strategies&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;cookie-management-system&#34;&gt;Cookie Management System&lt;/h2&gt;
-&lt;p&gt;Many modern websites, including Nation Africa, use cookies for session management and paywalls. To access full content, we need to maintain valid session cookies.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Running Local Cloudflare Workers to Gather News Information - Part 1</title>
-      <link>http://localhost:1313/posts/running-local-cloudflare-workers-news-part1/</link>
-      <pubDate>Mon, 07 Apr 2025 22:52:51 +0300</pubDate>
-      <guid>http://localhost:1313/posts/running-local-cloudflare-workers-news-part1/</guid>
-      <description>&lt;h2 id=&#34;introduction-to-cloudflare-workers&#34;&gt;Introduction to Cloudflare Workers&lt;/h2&gt;
-&lt;p&gt;Cloudflare Workers represent a paradigm shift in how we build and deploy applications on the web. Unlike traditional server-based applications, Cloudflare Workers run on Cloudflare&amp;rsquo;s edge network, meaning they execute closer to your users and provide impressive performance benefits.&lt;/p&gt;
-&lt;p&gt;Key advantages of Cloudflare Workers include:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Edge Execution&lt;/strong&gt;: Code runs on Cloudflare&amp;rsquo;s global network, reducing latency&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Serverless Architecture&lt;/strong&gt;: No servers to manage or scale&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Cost-Effective&lt;/strong&gt;: Pay only for what you use with generous free tier&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;JavaScript/TypeScript Native&lt;/strong&gt;: Write in familiar languages&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Powerful API Access&lt;/strong&gt;: Built-in fetch, KV storage, and more&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;In this series, I&amp;rsquo;ll walk through how I built a Cloudflare Worker that collects news articles from Nation Africa (&lt;a href=&#34;https://nation.africa&#34;&gt;https://nation.africa&lt;/a&gt;) for personal use, and how you might adapt this approach for other sites.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Workers on Just a Guy, from Kenya</title><link>https://www.guyfromtheke.com/tags/workers/</link><description>Recent content in Workers on Just a Guy, from Kenya</description><generator>Hugo -- 0.145.0</generator><language>en</language><copyright>PaperMod Contributors</copyright><lastBuildDate>Mon, 07 Apr 2025 22:54:51 +0300</lastBuildDate><atom:link href="https://www.guyfromtheke.com/tags/workers/index.xml" rel="self" type="application/rss+xml"/><item><title>Running Local Cloudflare Workers to Gather News Information - Part 3</title><link>https://www.guyfromtheke.com/posts/running-local-cloudflare-workers-news-part3/</link><pubDate>Mon, 07 Apr 2025 22:54:51 +0300</pubDate><guid>https://www.guyfromtheke.com/posts/running-local-cloudflare-workers-news-part3/</guid><description>&lt;h2 id="introduction">Introduction&lt;/h2>
+&lt;p>In the &lt;a href="https://www.guyfromtheke.com/posts/running-local-cloudflare-workers-news-part1">first part&lt;/a> of this series, we explored the basics of Cloudflare Workers and set up our project. The &lt;a href="https://www.guyfromtheke.com/posts/running-local-cloudflare-workers-news-part2">second part&lt;/a> covered core implementation details like cookie management and article parsing.&lt;/p>
+&lt;p>Now, in this final installment, we&amp;rsquo;ll dive into the advanced features that make our news scraping worker robust and maintainable:&lt;/p>
+&lt;ol>
+&lt;li>Multiple pattern matching techniques for resilient scraping&lt;/li>
+&lt;li>Comprehensive debugging endpoints&lt;/li>
+&lt;li>Deployment strategies and maintenance considerations&lt;/li>
+&lt;/ol>
+&lt;h2 id="multiple-pattern-matching-for-robust-scraping">Multiple Pattern Matching for Robust Scraping&lt;/h2>
+&lt;p>One of the biggest challenges in web scraping is handling website changes. News sites frequently update their layouts and HTML structure, which can break simple scraping approaches. To build a resilient solution, I implemented a multi-tiered approach to article extraction.&lt;/p></description></item><item><title>Running Local Cloudflare Workers to Gather News Information - Part 2</title><link>https://www.guyfromtheke.com/posts/running-local-cloudflare-workers-news-part2/</link><pubDate>Mon, 07 Apr 2025 22:53:51 +0300</pubDate><guid>https://www.guyfromtheke.com/posts/running-local-cloudflare-workers-news-part2/</guid><description>&lt;h2 id="introduction">Introduction&lt;/h2>
+&lt;p>In &lt;a href="https://www.guyfromtheke.com/posts/running-local-cloudflare-workers-news-part1">Part 1&lt;/a>, we covered the basics of Cloudflare Workers and set up our project. Now, let&amp;rsquo;s dive into the core implementation details that make our news gathering worker function.&lt;/p>
+&lt;p>This post focuses on three crucial aspects:&lt;/p>
+&lt;ol>
+&lt;li>Cookie management for authenticated access&lt;/li>
+&lt;li>Article fetching and parsing techniques&lt;/li>
+&lt;li>Error handling and debugging strategies&lt;/li>
+&lt;/ol>
+&lt;h2 id="cookie-management-system">Cookie Management System&lt;/h2>
+&lt;p>Many modern websites, including Nation Africa, use cookies for session management and paywalls. To access full content, we need to maintain valid session cookies.&lt;/p></description></item><item><title>Running Local Cloudflare Workers to Gather News Information - Part 1</title><link>https://www.guyfromtheke.com/posts/running-local-cloudflare-workers-news-part1/</link><pubDate>Mon, 07 Apr 2025 22:52:51 +0300</pubDate><guid>https://www.guyfromtheke.com/posts/running-local-cloudflare-workers-news-part1/</guid><description>&lt;h2 id="introduction-to-cloudflare-workers">Introduction to Cloudflare Workers&lt;/h2>
+&lt;p>Cloudflare Workers represent a paradigm shift in how we build and deploy applications on the web. Unlike traditional server-based applications, Cloudflare Workers run on Cloudflare&amp;rsquo;s edge network, meaning they execute closer to your users and provide impressive performance benefits.&lt;/p>
+&lt;p>Key advantages of Cloudflare Workers include:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Edge Execution&lt;/strong>: Code runs on Cloudflare&amp;rsquo;s global network, reducing latency&lt;/li>
+&lt;li>&lt;strong>Serverless Architecture&lt;/strong>: No servers to manage or scale&lt;/li>
+&lt;li>&lt;strong>Cost-Effective&lt;/strong>: Pay only for what you use with generous free tier&lt;/li>
+&lt;li>&lt;strong>JavaScript/TypeScript Native&lt;/strong>: Write in familiar languages&lt;/li>
+&lt;li>&lt;strong>Powerful API Access&lt;/strong>: Built-in fetch, KV storage, and more&lt;/li>
+&lt;/ul>
+&lt;p>In this series, I&amp;rsquo;ll walk through how I built a Cloudflare Worker that collects news articles from Nation Africa (&lt;a href="https://nation.africa">https://nation.africa&lt;/a>) for personal use, and how you might adapt this approach for other sites.&lt;/p></description></item></channel></rss>
