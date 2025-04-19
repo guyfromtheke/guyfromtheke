@@ -21,7 +21,7 @@ params:
       url: "https://www.linkedin.com/in/duncan-njoroge/"
     - name: reddit
       url: "https://www.reddit.com/user/guyfromtheke"
-    - name: gmail
+    - name: mail
       url: "mailto:kienjdu@gmail.com"
   cover:
     linkFullImages: true
@@ -48,6 +48,10 @@ menu:
       name: Archives
       url: /archives/
       weight: 30
+    - identifier: cv
+      name: CV
+      url: /cv/
+      weight: 40
 
 
 # enableInlineShortcodes: true
