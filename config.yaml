@@ -21,6 +21,8 @@ params:
       url: "https://www.linkedin.com/in/duncan-njoroge/"
     - name: reddit
       url: "https://www.reddit.com/user/guyfromtheke"
+    - name: gmail
+      url: "mailto:kienjdu@gmail.com"
   cover:
     linkFullImages: true
 
