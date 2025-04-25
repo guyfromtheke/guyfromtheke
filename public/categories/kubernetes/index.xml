@@ -1,19 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Kubernetes on Just a Guy, from Kenya</title><link>https://www.guyfromtheke.com/categories/kubernetes/</link><description>Recent content in Kubernetes on Just a Guy, from Kenya</description><generator>Hugo -- 0.145.0</generator><language>en</language><copyright>PaperMod Contributors</copyright><lastBuildDate>Tue, 15 Apr 2025 04:26:00 +0300</lastBuildDate><atom:link href="https://www.guyfromtheke.com/categories/kubernetes/index.xml" rel="self" type="application/rss+xml"/><item><title>Secure Kubernetes Cluster Upgrades: A Step-by-Step Guide</title><link>https://www.guyfromtheke.com/posts/secure-kubernetes-cluster-upgrades/</link><pubDate>Tue, 15 Apr 2025 04:26:00 +0300</pubDate><guid>https://www.guyfromtheke.com/posts/secure-kubernetes-cluster-upgrades/</guid><description>&lt;h1 id="secure-kubernetes-cluster-upgrades-a-step-by-step-guide">Secure Kubernetes Cluster Upgrades: A Step-by-Step Guide&lt;/h1>
-&lt;p>In this post, I&amp;rsquo;ll document a recent Kubernetes cluster upgrade process I implemented, focusing on security, automation, and best practices. I&amp;rsquo;ll walk through the entire process from environment assessment to verification, highlighting challenges and solutions along the way.&lt;/p>
-&lt;h2 id="environment-overview">Environment Overview&lt;/h2>
-&lt;p>Our setup consisted of a small K3s Kubernetes cluster running on Ubuntu 24.04 with:&lt;/p>
-&lt;ul>
-&lt;li>1 master node (control plane)&lt;/li>
-&lt;li>2 worker nodes&lt;/li>
-&lt;li>All nodes running an older kernel version (6.8.0-56-generic)&lt;/li>
-&lt;li>Multiple security updates pending&lt;/li>
-&lt;/ul>
-&lt;h2 id="upgrade-objectives">Upgrade Objectives&lt;/h2>
-&lt;ol>
-&lt;li>Update all system packages across all nodes&lt;/li>
-&lt;li>Apply kernel updates securely&lt;/li>
-&lt;li>Minimize downtime by implementing a rolling upgrade&lt;/li>
-&lt;li>Establish secure automation for future upgrades&lt;/li>
-&lt;/ol>
-&lt;h2 id="step-1-setting-up-secure-access">Step 1: Setting Up Secure Access&lt;/h2>
-&lt;p>The first step was to establish secure, password-less authentication using SSH keys instead of using plaintext passwords.&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kubernetes on Just a Guy, from Kenya</title>
+    <link>http://localhost:1313/categories/kubernetes/</link>
+    <description>Recent content in Kubernetes on Just a Guy, from Kenya</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <copyright>© [PaperMod Contributors](https://github.com/adityatelange/hugo-PaperMod/graphs/contributors)</copyright>
+    <lastBuildDate>Tue, 15 Apr 2025 04:26:00 +0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Secure Kubernetes Cluster Upgrades: A Step-by-Step Guide</title>
+      <link>http://localhost:1313/posts/secure-kubernetes-cluster-upgrades/</link>
+      <pubDate>Tue, 15 Apr 2025 04:26:00 +0300</pubDate>
+      <guid>http://localhost:1313/posts/secure-kubernetes-cluster-upgrades/</guid>
+      <description>&lt;h1 id=&#34;secure-kubernetes-cluster-upgrades-a-step-by-step-guide&#34;&gt;Secure Kubernetes Cluster Upgrades: A Step-by-Step Guide&lt;/h1&gt;&#xA;&lt;p&gt;In this post, I&amp;rsquo;ll document a recent Kubernetes cluster upgrade process I implemented, focusing on security, automation, and best practices. I&amp;rsquo;ll walk through the entire process from environment assessment to verification, highlighting challenges and solutions along the way.&lt;/p&gt;&#xA;&lt;h2 id=&#34;environment-overview&#34;&gt;Environment Overview&lt;/h2&gt;&#xA;&lt;p&gt;Our setup consisted of a small K3s Kubernetes cluster running on Ubuntu 24.04 with:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;1 master node (control plane)&lt;/li&gt;&#xA;&lt;li&gt;2 worker nodes&lt;/li&gt;&#xA;&lt;li&gt;All nodes running an older kernel version (6.8.0-56-generic)&lt;/li&gt;&#xA;&lt;li&gt;Multiple security updates pending&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;upgrade-objectives&#34;&gt;Upgrade Objectives&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Update all system packages across all nodes&lt;/li&gt;&#xA;&lt;li&gt;Apply kernel updates securely&lt;/li&gt;&#xA;&lt;li&gt;Minimize downtime by implementing a rolling upgrade&lt;/li&gt;&#xA;&lt;li&gt;Establish secure automation for future upgrades&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;step-1-setting-up-secure-access&#34;&gt;Step 1: Setting Up Secure Access&lt;/h2&gt;&#xA;&lt;p&gt;The first step was to establish secure, password-less authentication using SSH keys instead of using plaintext passwords.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
