@@ -1,6 +1,5 @@
-# .cloudflare/pages.toml
 [build]
-command = "hugo --gc --minify"
+command = "curl -L https://github.com/gohugoio/hugo/releases/download/v0.146.7/hugo_extended_0.146.7_Linux-64bit.tar.gz | tar xz && ./hugo --gc --minify"
 publish = "public"
 
 [build.environment]
