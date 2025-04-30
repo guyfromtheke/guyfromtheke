@@ -2,53 +2,53 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Just a Guy, from Kenya</title>
-    <link>http://localhost:1313/</link>
+    <link>https://www.guyfromtheke.com/</link>
     <description>Recent content on Just a Guy, from Kenya</description>
     <generator>Hugo -- 0.146.7</generator>
     <language>en</language>
     <copyright>PaperMod Contributors</copyright>
     <lastBuildDate>Sun, 27 Apr 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.guyfromtheke.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Setting Up ArgoCD in Your Kubernetes Cluster</title>
-      <link>http://localhost:1313/posts/argocd-guide/setting-up-argocd-in-your-kubernetes-cluster/</link>
+      <link>https://www.guyfromtheke.com/posts/argocd-guide/setting-up-argocd-in-your-kubernetes-cluster/</link>
       <pubDate>Sun, 27 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/argocd-guide/setting-up-argocd-in-your-kubernetes-cluster/</guid>
+      <guid>https://www.guyfromtheke.com/posts/argocd-guide/setting-up-argocd-in-your-kubernetes-cluster/</guid>
       <description>A comprehensive guide to installing and configuring ArgoCD in a Kubernetes environment</description>
     </item>
     <item>
       <title>Optimizing Resource Limits and Pod Distribution for ArgoCD</title>
-      <link>http://localhost:1313/posts/argocd-guide/optimizing-resource-limits-for-pod-distribution-for-argocd/</link>
+      <link>https://www.guyfromtheke.com/posts/argocd-guide/optimizing-resource-limits-for-pod-distribution-for-argocd/</link>
       <pubDate>Sun, 27 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/argocd-guide/optimizing-resource-limits-for-pod-distribution-for-argocd/</guid>
+      <guid>https://www.guyfromtheke.com/posts/argocd-guide/optimizing-resource-limits-for-pod-distribution-for-argocd/</guid>
       <description>Advanced guide for optimizing ArgoCD deployment with proper resource management and high availability</description>
     </item>
     <item>
       <title>ArgoCD Real-World Implementation Scenarios</title>
-      <link>http://localhost:1313/posts/argocd-guide/argocd-real-world-scenarios/</link>
+      <link>https://www.guyfromtheke.com/posts/argocd-guide/argocd-real-world-scenarios/</link>
       <pubDate>Sun, 27 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/argocd-guide/argocd-real-world-scenarios/</guid>
+      <guid>https://www.guyfromtheke.com/posts/argocd-guide/argocd-real-world-scenarios/</guid>
       <description>Practical implementation scenarios and solutions for ArgoCD in production environments</description>
     </item>
     <item>
       <title>ArgoCD Integration Patterns</title>
-      <link>http://localhost:1313/posts/argocd-guide/argocd-integration-patterns/</link>
+      <link>https://www.guyfromtheke.com/posts/argocd-guide/argocd-integration-patterns/</link>
       <pubDate>Sun, 27 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/argocd-guide/argocd-integration-patterns/</guid>
+      <guid>https://www.guyfromtheke.com/posts/argocd-guide/argocd-integration-patterns/</guid>
       <description>Comprehensive guide for integrating ArgoCD with CI/CD pipelines, external tools, and enterprise systems</description>
     </item>
     <item>
       <title>ArgoCD Quick Reference Guide</title>
-      <link>http://localhost:1313/posts/argocd-guide/argocd-quick-reference/</link>
+      <link>https://www.guyfromtheke.com/posts/argocd-guide/argocd-quick-reference/</link>
       <pubDate>Sun, 27 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/argocd-guide/argocd-quick-reference/</guid>
+      <guid>https://www.guyfromtheke.com/posts/argocd-guide/argocd-quick-reference/</guid>
       <description>Quick reference guide for common ArgoCD operations and configurations</description>
     </item>
     <item>
       <title>Secure Kubernetes Cluster Upgrades: A Step-by-Step Guide</title>
-      <link>http://localhost:1313/posts/secure-kubernetes-cluster-upgrades/</link>
+      <link>https://www.guyfromtheke.com/posts/secure-kubernetes-cluster-upgrades/</link>
       <pubDate>Tue, 15 Apr 2025 04:26:00 +0300</pubDate>
-      <guid>http://localhost:1313/posts/secure-kubernetes-cluster-upgrades/</guid>
+      <guid>https://www.guyfromtheke.com/posts/secure-kubernetes-cluster-upgrades/</guid>
       <description>&lt;h1 id=&#34;secure-kubernetes-cluster-upgrades-a-step-by-step-guide&#34;&gt;Secure Kubernetes Cluster Upgrades: A Step-by-Step Guide&lt;/h1&gt;
 &lt;p&gt;In this post, I&amp;rsquo;ll document a recent Kubernetes cluster upgrade process I implemented, focusing on security, automation, and best practices. I&amp;rsquo;ll walk through the entire process from environment assessment to verification, highlighting challenges and solutions along the way.&lt;/p&gt;
 &lt;h2 id=&#34;environment-overview&#34;&gt;Environment Overview&lt;/h2&gt;
@@ -71,11 +71,11 @@
     </item>
     <item>
       <title>Running Local Cloudflare Workers to Gather News Information - Part 3</title>
-      <link>http://localhost:1313/posts/running-local-cloudflare-workers-news-part3/</link>
+      <link>https://www.guyfromtheke.com/posts/running-local-cloudflare-workers-news-part3/</link>
       <pubDate>Mon, 07 Apr 2025 22:54:51 +0300</pubDate>
-      <guid>http://localhost:1313/posts/running-local-cloudflare-workers-news-part3/</guid>
+      <guid>https://www.guyfromtheke.com/posts/running-local-cloudflare-workers-news-part3/</guid>
       <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;In the &lt;a href=&#34;http://localhost:1313/posts/running-local-cloudflare-workers-news-part1&#34;&gt;first part&lt;/a&gt; of this series, we explored the basics of Cloudflare Workers and set up our project. The &lt;a href=&#34;http://localhost:1313/posts/running-local-cloudflare-workers-news-part2&#34;&gt;second part&lt;/a&gt; covered core implementation details like cookie management and article parsing.&lt;/p&gt;
+&lt;p&gt;In the &lt;a href=&#34;https://www.guyfromtheke.com/posts/running-local-cloudflare-workers-news-part1&#34;&gt;first part&lt;/a&gt; of this series, we explored the basics of Cloudflare Workers and set up our project. The &lt;a href=&#34;https://www.guyfromtheke.com/posts/running-local-cloudflare-workers-news-part2&#34;&gt;second part&lt;/a&gt; covered core implementation details like cookie management and article parsing.&lt;/p&gt;
 &lt;p&gt;Now, in this final installment, we&amp;rsquo;ll dive into the advanced features that make our news scraping worker robust and maintainable:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Multiple pattern matching techniques for resilient scraping&lt;/li&gt;
@@ -87,11 +87,11 @@
     </item>
     <item>
       <title>Running Local Cloudflare Workers to Gather News Information - Part 2</title>
-      <link>http://localhost:1313/posts/running-local-cloudflare-workers-news-part2/</link>
+      <link>https://www.guyfromtheke.com/posts/running-local-cloudflare-workers-news-part2/</link>
       <pubDate>Mon, 07 Apr 2025 22:53:51 +0300</pubDate>
-      <guid>http://localhost:1313/posts/running-local-cloudflare-workers-news-part2/</guid>
+      <guid>https://www.guyfromtheke.com/posts/running-local-cloudflare-workers-news-part2/</guid>
       <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
-&lt;p&gt;In &lt;a href=&#34;http://localhost:1313/posts/running-local-cloudflare-workers-news-part1&#34;&gt;Part 1&lt;/a&gt;, we covered the basics of Cloudflare Workers and set up our project. Now, let&amp;rsquo;s dive into the core implementation details that make our news gathering worker function.&lt;/p&gt;
+&lt;p&gt;In &lt;a href=&#34;https://www.guyfromtheke.com/posts/running-local-cloudflare-workers-news-part1&#34;&gt;Part 1&lt;/a&gt;, we covered the basics of Cloudflare Workers and set up our project. Now, let&amp;rsquo;s dive into the core implementation details that make our news gathering worker function.&lt;/p&gt;
 &lt;p&gt;This post focuses on three crucial aspects:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Cookie management for authenticated access&lt;/li&gt;
@@ -103,9 +103,9 @@
     </item>
     <item>
       <title>Running Local Cloudflare Workers to Gather News Information - Part 1</title>
-      <link>http://localhost:1313/posts/running-local-cloudflare-workers-news-part1/</link>
+      <link>https://www.guyfromtheke.com/posts/running-local-cloudflare-workers-news-part1/</link>
       <pubDate>Mon, 07 Apr 2025 22:52:51 +0300</pubDate>
-      <guid>http://localhost:1313/posts/running-local-cloudflare-workers-news-part1/</guid>
+      <guid>https://www.guyfromtheke.com/posts/running-local-cloudflare-workers-news-part1/</guid>
       <description>&lt;h2 id=&#34;introduction-to-cloudflare-workers&#34;&gt;Introduction to Cloudflare Workers&lt;/h2&gt;
 &lt;p&gt;Cloudflare Workers represent a paradigm shift in how we build and deploy applications on the web. Unlike traditional server-based applications, Cloudflare Workers run on Cloudflare&amp;rsquo;s edge network, meaning they execute closer to your users and provide impressive performance benefits.&lt;/p&gt;
 &lt;p&gt;Key advantages of Cloudflare Workers include:&lt;/p&gt;
@@ -120,45 +120,45 @@
     </item>
     <item>
       <title>Managing Proxmox Containers with Terraform</title>
-      <link>http://localhost:1313/posts/managing-proxmox-containers-with-terraform/</link>
+      <link>https://www.guyfromtheke.com/posts/managing-proxmox-containers-with-terraform/</link>
       <pubDate>Wed, 26 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/managing-proxmox-containers-with-terraform/</guid>
+      <guid>https://www.guyfromtheke.com/posts/managing-proxmox-containers-with-terraform/</guid>
       <description>A step-by-step guide on how to create and manage LXC containers in Proxmox using Terraform</description>
     </item>
     <item>
       <title>My Website, finally! :)</title>
-      <link>http://localhost:1313/posts/first/</link>
+      <link>https://www.guyfromtheke.com/posts/first/</link>
       <pubDate>Sun, 16 Mar 2025 01:45:05 +0300</pubDate>
-      <guid>http://localhost:1313/posts/first/</guid>
+      <guid>https://www.guyfromtheke.com/posts/first/</guid>
       <description>&lt;h1 id=&#34;kinda-finally-did-it-&#34;&gt;Kinda finally did it ?&lt;/h1&gt;
 &lt;p&gt;So over the past few weeks I have been working on my homelab, and I have learnt sooo much along the way, and I figured, the best way to post about it was to write about it. So I wrote an article on linkedln &lt;a href=&#34;https://www.linkedin.com/pulse/project-home-lab-part-1-duncan-njoroge-k6roc/?trackingId=xvkKya%2FfRE%2BFavksulcKxw%3D%3D&#34;&gt;https://www.linkedin.com/pulse/project-home-lab-part-1-duncan-njoroge-k6roc/?trackingId=xvkKya%2FfRE%2BFavksulcKxw%3D%3D&lt;/a&gt; Which elicited a lot of interest. But I also not only wanted to document it there, I wanted to be able to share it to the world, so that when they search for something related to &amp;quot; how do I begin a homelab, they will find some footing.&lt;/p&gt;</description>
     </item>
     <item>
       <title>About Me</title>
-      <link>http://localhost:1313/about/</link>
+      <link>https://www.guyfromtheke.com/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/about/</guid>
+      <guid>https://www.guyfromtheke.com/about/</guid>
       <description>About Guy From the Ke</description>
     </item>
     <item>
       <title>CV</title>
-      <link>http://localhost:1313/cv/</link>
+      <link>https://www.guyfromtheke.com/cv/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/cv/</guid>
+      <guid>https://www.guyfromtheke.com/cv/</guid>
       <description>&lt;p&gt;If you are not redirected automatically, follow this &lt;a href=&#34;https://duncan-digital-portrait-91.lovable.app/&#34;&gt;link&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Debug Menu Structure</title>
-      <link>http://localhost:1313/debug/</link>
+      <link>https://www.guyfromtheke.com/debug/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/debug/</guid>
+      <guid>https://www.guyfromtheke.com/debug/</guid>
       <description>Debugging page to show menu structure</description>
     </item>
     <item>
       <title>Tags</title>
-      <link>http://localhost:1313/tags/</link>
+      <link>https://www.guyfromtheke.com/tags/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/</guid>
+      <guid>https://www.guyfromtheke.com/tags/</guid>
       <description>tags</description>
     </item>
   </channel>

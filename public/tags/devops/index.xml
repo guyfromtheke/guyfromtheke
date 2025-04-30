@@ -2,53 +2,53 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Devops on Just a Guy, from Kenya</title>
-    <link>http://localhost:1313/tags/devops/</link>
+    <link>https://www.guyfromtheke.com/tags/devops/</link>
     <description>Recent content in Devops on Just a Guy, from Kenya</description>
     <generator>Hugo -- 0.146.7</generator>
     <language>en</language>
     <copyright>PaperMod Contributors</copyright>
     <lastBuildDate>Sun, 27 Apr 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/devops/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.guyfromtheke.com/tags/devops/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Setting Up ArgoCD in Your Kubernetes Cluster</title>
-      <link>http://localhost:1313/posts/argocd-guide/setting-up-argocd-in-your-kubernetes-cluster/</link>
+      <link>https://www.guyfromtheke.com/posts/argocd-guide/setting-up-argocd-in-your-kubernetes-cluster/</link>
       <pubDate>Sun, 27 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/argocd-guide/setting-up-argocd-in-your-kubernetes-cluster/</guid>
+      <guid>https://www.guyfromtheke.com/posts/argocd-guide/setting-up-argocd-in-your-kubernetes-cluster/</guid>
       <description>A comprehensive guide to installing and configuring ArgoCD in a Kubernetes environment</description>
     </item>
     <item>
       <title>Optimizing Resource Limits and Pod Distribution for ArgoCD</title>
-      <link>http://localhost:1313/posts/argocd-guide/optimizing-resource-limits-for-pod-distribution-for-argocd/</link>
+      <link>https://www.guyfromtheke.com/posts/argocd-guide/optimizing-resource-limits-for-pod-distribution-for-argocd/</link>
       <pubDate>Sun, 27 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/argocd-guide/optimizing-resource-limits-for-pod-distribution-for-argocd/</guid>
+      <guid>https://www.guyfromtheke.com/posts/argocd-guide/optimizing-resource-limits-for-pod-distribution-for-argocd/</guid>
       <description>Advanced guide for optimizing ArgoCD deployment with proper resource management and high availability</description>
     </item>
     <item>
       <title>ArgoCD Real-World Implementation Scenarios</title>
-      <link>http://localhost:1313/posts/argocd-guide/argocd-real-world-scenarios/</link>
+      <link>https://www.guyfromtheke.com/posts/argocd-guide/argocd-real-world-scenarios/</link>
       <pubDate>Sun, 27 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/argocd-guide/argocd-real-world-scenarios/</guid>
+      <guid>https://www.guyfromtheke.com/posts/argocd-guide/argocd-real-world-scenarios/</guid>
       <description>Practical implementation scenarios and solutions for ArgoCD in production environments</description>
     </item>
     <item>
       <title>ArgoCD Integration Patterns</title>
-      <link>http://localhost:1313/posts/argocd-guide/argocd-integration-patterns/</link>
+      <link>https://www.guyfromtheke.com/posts/argocd-guide/argocd-integration-patterns/</link>
       <pubDate>Sun, 27 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/argocd-guide/argocd-integration-patterns/</guid>
+      <guid>https://www.guyfromtheke.com/posts/argocd-guide/argocd-integration-patterns/</guid>
       <description>Comprehensive guide for integrating ArgoCD with CI/CD pipelines, external tools, and enterprise systems</description>
     </item>
     <item>
       <title>ArgoCD Quick Reference Guide</title>
-      <link>http://localhost:1313/posts/argocd-guide/argocd-quick-reference/</link>
+      <link>https://www.guyfromtheke.com/posts/argocd-guide/argocd-quick-reference/</link>
       <pubDate>Sun, 27 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/argocd-guide/argocd-quick-reference/</guid>
+      <guid>https://www.guyfromtheke.com/posts/argocd-guide/argocd-quick-reference/</guid>
       <description>Quick reference guide for common ArgoCD operations and configurations</description>
     </item>
     <item>
       <title>Secure Kubernetes Cluster Upgrades: A Step-by-Step Guide</title>
-      <link>http://localhost:1313/posts/secure-kubernetes-cluster-upgrades/</link>
+      <link>https://www.guyfromtheke.com/posts/secure-kubernetes-cluster-upgrades/</link>
       <pubDate>Tue, 15 Apr 2025 04:26:00 +0300</pubDate>
-      <guid>http://localhost:1313/posts/secure-kubernetes-cluster-upgrades/</guid>
+      <guid>https://www.guyfromtheke.com/posts/secure-kubernetes-cluster-upgrades/</guid>
       <description>&lt;h1 id=&#34;secure-kubernetes-cluster-upgrades-a-step-by-step-guide&#34;&gt;Secure Kubernetes Cluster Upgrades: A Step-by-Step Guide&lt;/h1&gt;
 &lt;p&gt;In this post, I&amp;rsquo;ll document a recent Kubernetes cluster upgrade process I implemented, focusing on security, automation, and best practices. I&amp;rsquo;ll walk through the entire process from environment assessment to verification, highlighting challenges and solutions along the way.&lt;/p&gt;
 &lt;h2 id=&#34;environment-overview&#34;&gt;Environment Overview&lt;/h2&gt;
@@ -71,9 +71,9 @@
     </item>
     <item>
       <title>Managing Proxmox Containers with Terraform</title>
-      <link>http://localhost:1313/posts/managing-proxmox-containers-with-terraform/</link>
+      <link>https://www.guyfromtheke.com/posts/managing-proxmox-containers-with-terraform/</link>
       <pubDate>Wed, 26 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/managing-proxmox-containers-with-terraform/</guid>
+      <guid>https://www.guyfromtheke.com/posts/managing-proxmox-containers-with-terraform/</guid>
       <description>A step-by-step guide on how to create and manage LXC containers in Proxmox using Terraform</description>
     </item>
   </channel>
