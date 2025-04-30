@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Lxc on Just a Guy, from Kenya</title>
     <link>http://localhost:1313/tags/lxc/</link>
     <description>Recent content in Lxc on Just a Guy, from Kenya</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- 0.146.7</generator>
     <language>en</language>
-    <copyright>© [PaperMod Contributors](https://github.com/adityatelange/hugo-PaperMod/graphs/contributors)</copyright>
+    <copyright>PaperMod Contributors</copyright>
     <lastBuildDate>Wed, 26 Mar 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/lxc/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,7 +14,7 @@
       <link>http://localhost:1313/posts/managing-proxmox-containers-with-terraform/</link>
       <pubDate>Wed, 26 Mar 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/managing-proxmox-containers-with-terraform/</guid>
-      <description>&lt;h1 id=&#34;managing-proxmox-containers-with-terraform&#34;&gt;Managing Proxmox Containers with Terraform&lt;/h1&gt;&#xA;&lt;p&gt;Infrastructure as Code (IaC) has revolutionized the way we manage and deploy infrastructure. In this blog post, I&amp;rsquo;ll walk you through setting up and managing LXC containers in Proxmox using Terraform, a popular IaC tool. We&amp;rsquo;ll also explore a common challenge when provisioning SSH access and how to work around it effectively.&lt;/p&gt;&#xA;&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;&#xA;&lt;p&gt;Before we begin, make sure you have:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;A Proxmox VE server up and running (I&amp;rsquo;m using version 8.x)&lt;/li&gt;&#xA;&lt;li&gt;Terraform installed on your local machine (version 1.0+)&lt;/li&gt;&#xA;&lt;li&gt;LXC templates downloaded on your Proxmox server&lt;/li&gt;&#xA;&lt;li&gt;API token created in Proxmox with the appropriate permissions&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;project-structure&#34;&gt;Project Structure&lt;/h2&gt;&#xA;&lt;p&gt;Let&amp;rsquo;s set up a simple project structure for our Terraform configuration:&lt;/p&gt;</description>
+      <description>A step-by-step guide on how to create and manage LXC containers in Proxmox using Terraform</description>
     </item>
   </channel>
 </rss>

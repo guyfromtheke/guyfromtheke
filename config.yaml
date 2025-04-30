@@ -6,12 +6,16 @@ copyright: "© [PaperMod Contributors](https://github.com/adityatelange/hugo-Pap
 pagination:
   pagerSize: 5
 theme: PaperMod
+mainSections: ["posts"]
 
 params:
   comments: true
   homeInfoParams:
     Title: "I'm @guyfromtheke 🇰🇪"
-    Content: "Welcome to my corner of the internet."
+    Content: >
+      Welcome to my corner of the internet.
+      
+      Check out my latest guides and articles below.
   socialIcons:
     - name: twitter
       url: "https://x.com/guyfromtheke"
@@ -27,12 +31,11 @@ params:
     linkFullImages: true
 
   ShowBreadCrumbs: true
-
   ShowReadingTime: true
-
   ShowShareButtons: true
-
   ShowPostNavLinks: true
+  ShowCodeCopyButtons: true
+  ShowToc: true
 
 menu:
   main:
@@ -52,8 +55,6 @@ menu:
       name: CV
       url: /cv/
       weight: 40
-
-
 # enableInlineShortcodes: true
 # enableInlineShortcodes: true
 # enableRobotsTXT: true
