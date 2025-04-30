@@ -1,9 +1,40 @@
 [build]
-command = "curl -L https://github.com/gohugoio/hugo/releases/download/v0.146.7/hugo_extended_0.146.7_Linux-64bit.tar.gz | tar xz && ./hugo --gc --minify"
+command = """
+set -e
+echo "=== Starting build process ==="
+pwd
+ls -la
+
+echo "Installing Hugo version 0.146.7..."
+curl -L https://github.com/gohugoio/hugo/releases/download/v0.146.7/hugo_extended_0.146.7_Linux-64bit.tar.gz | tar xzf - || { echo "Failed to download Hugo"; exit 1; }
+chmod +x hugo
+HUGO_BINARY="$(pwd)/hugo"
+echo "Hugo binary location: ${HUGO_BINARY}"
+
+echo "Installing theme..."
+rm -rf themes/PaperMod
+git clone --depth 1 https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod || { echo "Failed to clone theme"; exit 1; }
+
+echo "Verifying theme installation..."
+if [ ! -f "themes/PaperMod/theme.toml" ]; then
+    echo "Theme files not found"
+    ls -la themes/PaperMod/
+    exit 1
+fi
+
+echo "Hugo version:"
+${HUGO_BINARY} version
+
+echo "Building site..."
+${HUGO_BINARY} --gc --minify
+echo "=== Build process complete ==="
+"""
 publish = "public"
 
 [build.environment]
-HUGO_VERSION = "0.146.7"
+HUGO_VERSION = "extended_0.146.7"
 HUGO_ENV = "production"
 HUGO_ENABLEGITINFO = "true"
 
+[build.processing]
+skip_processing = false
