@@ -8,7 +8,18 @@ pagination:
 theme: PaperMod
 mainSections: ["posts"]
 
+markup:
+  goldmark:
+    renderer:
+      unsafe: true  # Allows raw HTML in markdown files
+
+ignoreErrors:
+  - error-remote-getjson
+ignoreLogs:
+  - warning-goldmark-raw-html
+
 params:
+  env: production  # Enable production mode for template processing
   comments: true
   homeInfoParams:
     Title: "I'm @guyfromtheke 🇰🇪"

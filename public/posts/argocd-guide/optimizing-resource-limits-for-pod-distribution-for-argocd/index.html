@@ -4,7 +4,7 @@
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>Optimizing Resource Limits and Pod Distribution for ArgoCD | Just a Guy, from Kenya</title>
 <meta name="keywords" content="kubernetes, argocd, gitops, devops, optimization">
 <meta name="description" content="Advanced guide for optimizing ArgoCD deployment with proper resource management and high availability">
@@ -55,7 +55,80 @@
         }
 
     </style>
-</noscript>
+</noscript><meta property="og:url" content="http://localhost:1313/posts/argocd-guide/optimizing-resource-limits-for-pod-distribution-for-argocd/">
+  <meta property="og:site_name" content="Just a Guy, from Kenya">
+  <meta property="og:title" content="Optimizing Resource Limits and Pod Distribution for ArgoCD">
+  <meta property="og:description" content="Advanced guide for optimizing ArgoCD deployment with proper resource management and high availability">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-04-27T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-04-27T00:00:00+00:00">
+    <meta property="article:tag" content="Kubernetes">
+    <meta property="article:tag" content="Argocd">
+    <meta property="article:tag" content="Gitops">
+    <meta property="article:tag" content="Devops">
+    <meta property="article:tag" content="Optimization">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Optimizing Resource Limits and Pod Distribution for ArgoCD">
+<meta name="twitter:description" content="Advanced guide for optimizing ArgoCD deployment with proper resource management and high availability">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Complete ArgoCD Implementation Guide",
+      "item": "http://localhost:1313/posts/argocd-guide/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Optimizing Resource Limits and Pod Distribution for ArgoCD",
+      "item": "http://localhost:1313/posts/argocd-guide/optimizing-resource-limits-for-pod-distribution-for-argocd/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Optimizing Resource Limits and Pod Distribution for ArgoCD",
+  "name": "Optimizing Resource Limits and Pod Distribution for ArgoCD",
+  "description": "Advanced guide for optimizing ArgoCD deployment with proper resource management and high availability",
+  "keywords": [
+    "kubernetes", "argocd", "gitops", "devops", "optimization"
+  ],
+  "articleBody": "Optimizing Resource Limits and Pod Distribution for ArgoCD Overview This guide details the process of optimizing an ArgoCD deployment in Kubernetes by implementing proper resource limits and ensuring optimal pod distribution across worker nodes. These optimizations enhance reliability, performance, and high availability of the ArgoCD installation.\nInitial Environment Analysis Cluster Configuration Kubernetes Cluster (K3s v1.31.6+k3s1) Architecture: 1 master node (control plane) 2 worker nodes Initial state: Pods distributed across all nodes including master Master Node Protection Implementing Control Plane Isolation # Adding taint to master node kubectl taint nodes node-role.kubernetes.io/control-plane=:NoSchedule Purpose of Master Node Taint Prevents regular workloads from scheduling on the control plane Reserves master node resources for critical cluster operations Enforces best practices for Kubernetes architecture Resource Limits Configuration Resource Allocation by Component Application Controller resources: requests: cpu: 100m memory: 128Mi limits: cpu: 500m memory: 512Mi API Server resources: requests: cpu: 50m memory: 64Mi limits: cpu: 200m memory: 128Mi Repository Server resources: requests: cpu: 50m memory: 64Mi limits: cpu: 200m memory: 256Mi Dex Server resources: requests: cpu: 50m memory: 128Mi limits: cpu: 200m memory: 256Mi Redis resources: requests: cpu: 50m memory: 32Mi limits: cpu: 100m memory: 64Mi ApplicationSet Controller resources: requests: cpu: 50m memory: 32Mi limits: cpu: 200m memory: 128Mi Notifications Controller resources: requests: cpu: 50m memory: 32Mi limits: cpu: 100m memory: 128Mi Pod Distribution Strategy Anti-Affinity Rules affinity: podAntiAffinity: preferredDuringSchedulingIgnoredDuringExecution: - weight: 100 podAffinityTerm: labelSelector: matchExpressions: - key: app.kubernetes.io/name operator: In values: - topologyKey: kubernetes.io/hostname Final Pod Distribution Worker Node 1: argocd-repo-server argocd-server Worker Node 2: argocd-application-controller argocd-applicationset-controller argocd-dex-server argocd-notifications-controller argocd-redis Optimization Results Resource Management Benefits Predictable resource usage Prevention of resource contention Efficient resource allocation Protection against memory/CPU exhaustion High Availability Improvements Proper workload distribution Enhanced fault tolerance Better resource utilization Reduced single point of failure risk Performance Metrics CPU usage maintained within defined limits Memory consumption optimized Improved response times Better overall cluster stability Monitoring and Maintenance Health Checks # View pod distribution kubectl get pods -n argocd -o wide # Check resource usage kubectl top pods -n argocd Resource Adjustment Monitor resource usage and adjust limits based on:\nActual usage patterns Application load Cluster capacity Performance requirements Best Practices Summary Control Plane Protection\nMaster node tainted Workloads on worker nodes only Critical services protected Resource Management\nAppropriate limits set Resources allocated based on component needs Buffer for spike handling High Availability\nPod anti-affinity rules Distributed workload Failure domain isolation Advanced Troubleshooting Resource Management Issues Pod Eviction Problems # Check node resources kubectl describe node # View pod resource usage kubectl top pods -n argocd --containers # Check eviction events kubectl get events -n argocd --field-selector reason=Evicted Common causes:\nMemory pressure CPU throttling Storage pressure Node pressure Resource Limit Violations # Check pod QoS class kubectl get pods -n argocd -o custom-columns=\"NAME:.metadata.name,QOS:.status.qosClass\" # View resource quotas kubectl describe resourcequota -n argocd # Monitor resource usage trends kubectl top pods -n argocd --containers --sort-by=cpu Pod Distribution Issues Node Affinity Problems # Check node labels kubectl get nodes --show-labels # Verify pod placement kubectl get pods -n argocd -o wide # Debug scheduler decisions kubectl describe pod -n argocd | grep -A 10 Events Taint and Toleration Issues # List node taints kubectl get nodes -o custom-columns=NAME:.metadata.name,TAINTS:.spec.taints # Check pod tolerations kubectl get pod -n argocd -o jsonpath='{.spec.tolerations}' K3s-Specific Optimizations Worker Node Management # Check K3s service status sudo systemctl status k3s-agent # View K3s logs sudo journalctl -u k3s-agent # Monitor node conditions kubectl get nodes -o custom-columns=NAME:.metadata.name,STATUS:.status.conditions[*].type Storage Issues # Check default storage class kubectl get sc # View persistent volumes kubectl get pv,pvc -n argocd # Monitor storage usage kubectl describe nodes | grep \"Allocated resources\" High Availability Troubleshooting Pod Distribution Check # View pod spread kubectl get pods -n argocd -o wide --sort-by=.spec.nodeName # Check anti-affinity rules kubectl get pods -n argocd -o yaml | grep -A 10 affinity Load Balancing Issues # Check service endpoints kubectl get endpoints -n argocd # View service distribution kubectl describe svc argocd-server -n argocd Performance Optimization CPU Optimization # Monitor CPU throttling kubectl get pods -n argocd -o custom-columns=\"NAME:.metadata.name,CPU_REQUESTS:.spec.containers[*].resources.requests.cpu,CPU_LIMITS:.spec.containers[*].resources.limits.cpu\" # Check CPU pressure kubectl describe node | grep -A 5 \"Allocated resources\" Memory Management # View memory usage kubectl top pods -n argocd --containers # Check memory limits kubectl get pods -n argocd -o custom-columns=\"NAME:.metadata.name,MEMORY_REQUESTS:.spec.containers[*].resources.requests.memory,MEMORY_LIMITS:.spec.containers[*].resources.limits.memory\" Network Optimization Network Policy Verification # List network policies kubectl get networkpolicies -n argocd # Test network connectivity kubectl run tmp-shell --rm -i --tty --image nicolaka/netshoot -- /bin/bash Service Mesh Integration # Check proxy sidecars kubectl get pods -n argocd -o jsonpath='{.items[*].spec.containers[*].name}' # Verify mesh configuration kubectl describe pod -n argocd -l app.kubernetes.io/name=argocd-server Recovery and Rollback Configuration Backup # Backup resource configurations kubectl get deployment,statefulset -n argocd -o yaml \u003e argocd-workloads.yaml # Export current settings kubectl get configmap -n argocd -o yaml \u003e argocd-config.yaml Rollback Procedures # Revert to previous configuration kubectl apply -f argocd-workloads.yaml # Verify rollback kubectl get pods -n argocd Monitoring and Alerts Prometheus Integration apiVersion: monitoring.coreos.com/v1 kind: ServiceMonitor metadata: name: argocd-metrics spec: endpoints: - port: metrics interval: 30s selector: matchLabels: app.kubernetes.io/name: argocd-metrics Alert Configuration apiVersion: monitoring.coreos.com/v1 kind: PrometheusRule metadata: name: argocd-alerts spec: groups: - name: argocd rules: - alert: HighResourceUsage expr: container_memory_usage_bytes{namespace=\"argocd\"} \u003e 1Gi for: 5m labels: severity: warning Conclusion These optimizations ensure a robust, reliable, and efficient ArgoCD deployment. The configuration provides:\nProtected control plane Efficient resource utilization High availability Proper workload distribution Sustainable scaling capability Regular monitoring and adjustment of these settings ensure continued optimal performance as your GitOps implementation grows.\nReturn to the main guide for complete ArgoCD implementation documentation.\n",
+  "wordCount" : "922",
+  "inLanguage": "en",
+  "datePublished": "2025-04-27T00:00:00Z",
+  "dateModified": "2025-04-27T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/posts/argocd-guide/optimizing-resource-limits-for-pod-distribution-for-argocd/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Just a Guy, from Kenya",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
 
 <body class="" id="top">

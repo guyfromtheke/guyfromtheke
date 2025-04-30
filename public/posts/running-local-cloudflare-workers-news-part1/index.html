@@ -4,7 +4,7 @@
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>Running Local Cloudflare Workers to Gather News Information - Part 1 | Just a Guy, from Kenya</title>
 <meta name="keywords" content="cloudflare, workers, web scraping, typescript, serverless">
 <meta name="description" content="Introduction to Cloudflare Workers
@@ -65,7 +65,86 @@ In this series, I&rsquo;ll walk through how I built a Cloudflare Worker that col
         }
 
     </style>
-</noscript>
+</noscript><meta property="og:url" content="http://localhost:1313/posts/running-local-cloudflare-workers-news-part1/">
+  <meta property="og:site_name" content="Just a Guy, from Kenya">
+  <meta property="og:title" content="Running Local Cloudflare Workers to Gather News Information - Part 1">
+  <meta property="og:description" content="Introduction to Cloudflare Workers Cloudflare Workers represent a paradigm shift in how we build and deploy applications on the web. Unlike traditional server-based applications, Cloudflare Workers run on Cloudflare’s edge network, meaning they execute closer to your users and provide impressive performance benefits.
+Key advantages of Cloudflare Workers include:
+Edge Execution: Code runs on Cloudflare’s global network, reducing latency Serverless Architecture: No servers to manage or scale Cost-Effective: Pay only for what you use with generous free tier JavaScript/TypeScript Native: Write in familiar languages Powerful API Access: Built-in fetch, KV storage, and more In this series, I’ll walk through how I built a Cloudflare Worker that collects news articles from Nation Africa (https://nation.africa) for personal use, and how you might adapt this approach for other sites.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-04-07T22:52:51+03:00">
+    <meta property="article:modified_time" content="2025-04-07T22:52:51+03:00">
+    <meta property="article:tag" content="Cloudflare">
+    <meta property="article:tag" content="Workers">
+    <meta property="article:tag" content="Web Scraping">
+    <meta property="article:tag" content="Typescript">
+    <meta property="article:tag" content="Serverless">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Running Local Cloudflare Workers to Gather News Information - Part 1">
+<meta name="twitter:description" content="Introduction to Cloudflare Workers
+Cloudflare Workers represent a paradigm shift in how we build and deploy applications on the web. Unlike traditional server-based applications, Cloudflare Workers run on Cloudflare&rsquo;s edge network, meaning they execute closer to your users and provide impressive performance benefits.
+Key advantages of Cloudflare Workers include:
+
+Edge Execution: Code runs on Cloudflare&rsquo;s global network, reducing latency
+Serverless Architecture: No servers to manage or scale
+Cost-Effective: Pay only for what you use with generous free tier
+JavaScript/TypeScript Native: Write in familiar languages
+Powerful API Access: Built-in fetch, KV storage, and more
+
+In this series, I&rsquo;ll walk through how I built a Cloudflare Worker that collects news articles from Nation Africa (https://nation.africa) for personal use, and how you might adapt this approach for other sites.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Running Local Cloudflare Workers to Gather News Information - Part 1",
+      "item": "http://localhost:1313/posts/running-local-cloudflare-workers-news-part1/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Running Local Cloudflare Workers to Gather News Information - Part 1",
+  "name": "Running Local Cloudflare Workers to Gather News Information - Part 1",
+  "description": "Introduction to Cloudflare Workers Cloudflare Workers represent a paradigm shift in how we build and deploy applications on the web. Unlike traditional server-based applications, Cloudflare Workers run on Cloudflare\u0026rsquo;s edge network, meaning they execute closer to your users and provide impressive performance benefits.\nKey advantages of Cloudflare Workers include:\nEdge Execution: Code runs on Cloudflare\u0026rsquo;s global network, reducing latency Serverless Architecture: No servers to manage or scale Cost-Effective: Pay only for what you use with generous free tier JavaScript/TypeScript Native: Write in familiar languages Powerful API Access: Built-in fetch, KV storage, and more In this series, I\u0026rsquo;ll walk through how I built a Cloudflare Worker that collects news articles from Nation Africa (https://nation.africa) for personal use, and how you might adapt this approach for other sites.\n",
+  "keywords": [
+    "cloudflare", "workers", "web scraping", "typescript", "serverless"
+  ],
+  "articleBody": "Introduction to Cloudflare Workers Cloudflare Workers represent a paradigm shift in how we build and deploy applications on the web. Unlike traditional server-based applications, Cloudflare Workers run on Cloudflare’s edge network, meaning they execute closer to your users and provide impressive performance benefits.\nKey advantages of Cloudflare Workers include:\nEdge Execution: Code runs on Cloudflare’s global network, reducing latency Serverless Architecture: No servers to manage or scale Cost-Effective: Pay only for what you use with generous free tier JavaScript/TypeScript Native: Write in familiar languages Powerful API Access: Built-in fetch, KV storage, and more In this series, I’ll walk through how I built a Cloudflare Worker that collects news articles from Nation Africa (https://nation.africa) for personal use, and how you might adapt this approach for other sites.\nProject Overview and Goals The goal of this project was to create a reliable way to fetch recent news headlines from Nation Africa, a popular news source in Kenya. I wanted to:\nRetrieve the latest news headlines and their URLs Structure the data in a clean JSON format for downstream consumption Run the collection on a schedule (every 12 hours) Handle authentication and maintain session cookies properly Build a robust solution that can adapt to site changes This type of edge-deployed microservice is perfect for data collection tasks that don’t require heavy processing but benefit from reliability and scheduling.\nInitial Setup and Environment Configuration To get started with Cloudflare Workers, you’ll need a Cloudflare account and the Wrangler CLI tool. Here’s how I set up the project:\n1. Installing the Required Tools First, ensure you have Node.js and npm installed, then set up the project:\n# Install Wrangler CLI globally npm install -g wrangler # Create a new TypeScript Cloudflare Worker project npx create-cloudflare nation-worker-ts cd nation-worker-ts # Login to Cloudflare wrangler login 2. Project Structure The project structure created by the CLI looks like this:\nnation-worker-ts/ ├── src/ │ └── index.ts # Main worker code ├── .wrangler/ ├── node_modules/ ├── package.json ├── package-lock.json ├── tsconfig.json └── wrangler.jsonc # Worker configuration 3. Configuring wrangler.jsonc The wrangler.jsonc file is where we define the Worker’s configuration. Here’s my basic configuration:\n{ \"name\": \"nation-worker-ts\", \"main\": \"src/index.ts\", \"compatibility_date\": \"2025-04-04\", \"triggers\": { \"crons\": [\"0 */12 * * *\"] // Run every 12 hours }, \"kv_namespaces\": [ { \"binding\": \"KV\", \"id\": \"your-kv-namespace-id\", \"preview_id\": \"your-preview-kv-namespace-id\" } ] } 4. Setting Up Environment Variables For our worker to function, we need to define a few environment variables. I’ve configured these in the wrangler.jsonc file:\n{ \"vars\": { \"ADMIN_KEY\": \"your-admin-key\" } } This ADMIN_KEY will be used for authentication when refreshing cookies through the API.\n5. Setting Up KV Storage Cloudflare Workers KV is a global, low-latency key-value data store that we’ll use to store our session cookies. To create a KV namespace:\n# Create KV namespace wrangler kv:namespace create \"KV\" # This will output IDs to add to your wrangler.jsonc file Basic Worker Structure The base structure of our Cloudflare Worker includes two main entry points:\nHTTP Requests - The fetch handler processes incoming HTTP requests Scheduled Execution - The scheduled handler runs on our defined cron schedule Here’s a simplified version of our initial worker code:\nexport interface Env { KV: KVNamespace; ADMIN_KEY?: string; } export default { // Handle HTTP requests async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise\u003cResponse\u003e { // Request handling code here return new Response(\"Hello World\"); }, // Handle scheduled events (cron) async scheduled(event: ScheduledEvent, env: Env, ctx: ExecutionContext): Promise\u003cvoid\u003e { console.log(\"Running scheduled task\"); // Scheduled task code here } }; Next Steps In Part 2, we’ll dive into the core implementation details:\nHow to manage session cookies for authenticated requests Techniques for fetching and parsing news articles Implementing error handling and debugging features By the end of this series, you’ll have a fully functional Cloudflare Worker that can reliably collect news articles and deliver them as structured JSON data.\n",
+  "wordCount" : "643",
+  "inLanguage": "en",
+  "datePublished": "2025-04-07T22:52:51+03:00",
+  "dateModified": "2025-04-07T22:52:51+03:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/posts/running-local-cloudflare-workers-news-part1/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Just a Guy, from Kenya",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
 
 <body class="" id="top">

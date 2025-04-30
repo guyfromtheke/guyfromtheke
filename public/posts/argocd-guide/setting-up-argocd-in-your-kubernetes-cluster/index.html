@@ -4,7 +4,7 @@
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>Setting Up ArgoCD in Your Kubernetes Cluster | Just a Guy, from Kenya</title>
 <meta name="keywords" content="kubernetes, argocd, gitops, devops">
 <meta name="description" content="A comprehensive guide to installing and configuring ArgoCD in a Kubernetes environment">
@@ -55,7 +55,79 @@
         }
 
     </style>
-</noscript>
+</noscript><meta property="og:url" content="http://localhost:1313/posts/argocd-guide/setting-up-argocd-in-your-kubernetes-cluster/">
+  <meta property="og:site_name" content="Just a Guy, from Kenya">
+  <meta property="og:title" content="Setting Up ArgoCD in Your Kubernetes Cluster">
+  <meta property="og:description" content="A comprehensive guide to installing and configuring ArgoCD in a Kubernetes environment">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-04-27T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-04-27T00:00:00+00:00">
+    <meta property="article:tag" content="Kubernetes">
+    <meta property="article:tag" content="Argocd">
+    <meta property="article:tag" content="Gitops">
+    <meta property="article:tag" content="Devops">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Setting Up ArgoCD in Your Kubernetes Cluster">
+<meta name="twitter:description" content="A comprehensive guide to installing and configuring ArgoCD in a Kubernetes environment">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Complete ArgoCD Implementation Guide",
+      "item": "http://localhost:1313/posts/argocd-guide/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Setting Up ArgoCD in Your Kubernetes Cluster",
+      "item": "http://localhost:1313/posts/argocd-guide/setting-up-argocd-in-your-kubernetes-cluster/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Setting Up ArgoCD in Your Kubernetes Cluster",
+  "name": "Setting Up ArgoCD in Your Kubernetes Cluster",
+  "description": "A comprehensive guide to installing and configuring ArgoCD in a Kubernetes environment",
+  "keywords": [
+    "kubernetes", "argocd", "gitops", "devops"
+  ],
+  "articleBody": "What is ArgoCD? ArgoCD is a declarative, GitOps continuous delivery tool for Kubernetes. It automates the deployment of applications and helps maintain their desired state by continuously monitoring your Git repositories and ensuring your Kubernetes cluster matches the defined state in your Git configuration.\nKey features:\nAutomated deployment and sync from Git repositories Web UI and CLI for application management SSO Integration and RBAC Multi-cluster and multi-tenant support Health status analysis for Kubernetes resources Homelab Environment Overview Infrastructure Setup Single Kubernetes cluster with dedicated master and worker nodes Three-node setup: One master node (control plane) Two worker nodes for workload distribution Using K3s (v1.31.6+k3s1) as the Kubernetes distribution NGINX Ingress Controller for external access Network Architecture Internal network segment for cluster communication NodePort service exposure for external access HAProxy for load balancing (optional) Installation Process 1. Prerequisites Verification # Verify cluster access and node status kubectl get nodes 2. Creating ArgoCD Namespace kubectl create namespace argocd 3. Deploying ArgoCD kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml 4. Accessing ArgoCD Service Configuration # Configure NodePort for access kubectl patch svc argocd-server -n argocd -p '{\"spec\": {\"type\": \"NodePort\"}}' Initial Access Default username: admin Password: Retrieved using: kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath=\"{.data.password}\" | base64 -d 5. Ingress Configuration apiVersion: networking.k8s.io/v1 kind: Ingress metadata: name: argocd-ingress namespace: argocd annotations: nginx.ingress.kubernetes.io/ssl-passthrough: 'true' nginx.ingress.kubernetes.io/backend-protocol: 'HTTPS' nginx.ingress.kubernetes.io/force-ssl-redirect: 'true' spec: ingressClassName: nginx rules: - host: argocd.your-domain.com http: paths: - path: / pathType: Prefix backend: service: name: argocd-server port: number: 443 Challenges and Solutions Challenge 1: Initial Access Configuration Issue: Default ClusterIP service type limiting access Solution: Configured NodePort service type for direct access Challenge 2: Security Considerations Issue: Default admin password and insecure access Solution: Retrieved and documented initial admin password Configured HTTPS access through Ingress SSL passthrough enabled for secure communication Challenge 3: Architecture Best Practices Issue: Workload distribution and high availability Solution: Proper node labeling Resource allocation Anti-affinity rules (covered in the optimization guide) Next Steps Change the default admin password Configure your Git repositories Set up your first application Implement SSO (optional) Configure RBAC policies Advanced Configuration Implementing RBAC apiVersion: v1 kind: ConfigMap metadata: name: argocd-rbac-cm namespace: argocd data: policy.csv: | p, role:developer, applications, get, */*, allow p, role:developer, applications, sync, */*, allow g, developer-group, role:developer Setting Up SSO Configure OIDC providers Integrate with enterprise authentication Manage user sessions Backup and Disaster Recovery # Backup ArgoCD settings kubectl get -n argocd configmap,secret -o yaml \u003e argocd-backup.yaml # Backup application definitions argocd admin export \u003e applications-backup.yaml Monitoring Integration Prometheus metrics Grafana dashboards Alert configuration Security Hardening Network Policies Pod Security Policies Secret Encryption TLS Configuration Troubleshooting Guide Common Issues Application sync failures Authentication problems Network connectivity issues Resource constraints Debug Tools # Check ArgoCD logs kubectl logs -n argocd -l app.kubernetes.io/name=argocd-server kubectl logs -n argocd -l app.kubernetes.io/name=argocd-application-controller # View application status argocd app get # Check sync issues argocd app sync --debug Extended Troubleshooting Guide Installation Issues Pod Startup Failures # Check pod status kubectl get pods -n argocd # Check pod events kubectl describe pod -n argocd # Check container logs kubectl logs -n argocd Common causes:\nResource constraints Image pull failures Volume mount issues Node scheduling problems Network Connectivity Ingress Issues: # Check ingress status kubectl get ingress -n argocd kubectl describe ingress argocd-ingress -n argocd # Verify ingress controller kubectl get pods -n ingress-nginx Service Issues: # Check service endpoints kubectl get endpoints -n argocd # Verify service configuration kubectl describe svc argocd-server -n argocd Authentication Problems RBAC Issues # Verify RBAC configuration kubectl get rolebindings -n argocd kubectl get clusterrolebindings | grep argocd # Check service account permissions kubectl auth can-i --as system:serviceaccount:argocd:argocd-application-controller create deployments SSO Configuration # Check Dex logs kubectl logs -l app.kubernetes.io/name=argocd-dex-server -n argocd # Verify OIDC configuration kubectl get cm argocd-cm -n argocd -o yaml Git Repository Access SSH Key Issues # Check SSH known hosts kubectl get cm argocd-ssh-known-hosts-cm -n argocd # Verify repository credentials kubectl get secrets -n argocd | grep repo HTTPS Access Problems # Test repository connection argocd repo test https://github.com/your-org/your-repo.git # Check repository certificates kubectl get cm argocd-tls-certs-cm -n argocd Performance Issues Resource Usage # Check resource usage kubectl top pods -n argocd # View detailed metrics kubectl describe pod -n argocd -l app.kubernetes.io/name=argocd-application-controller Sync Performance # Check sync times argocd app list --output wide # View application events kubectl get events -n argocd --sort-by='.lastTimestamp' Recovery Procedures Backup Current State # Export all ArgoCD configurations kubectl get all -n argocd -o yaml \u003e argocd-backup.yaml # Export specific resources kubectl get applications -n argocd -o yaml \u003e applications-backup.yaml kubectl get appprojects -n argocd -o yaml \u003e projects-backup.yaml Restore Procedures # Restore from backup kubectl apply -f argocd-backup.yaml # Verify restoration kubectl get applications -n argocd argocd app list Environment-Specific Notes K3s Considerations Default ingress controller differences Resource limitations Storage class configuration Load balancer implementation Homelab Setup Local DNS configuration Certificate management Backup strategies Network policies Conclusion This setup provides a robust foundation for GitOps-based deployments using ArgoCD. The configuration ensures secure access, proper isolation, and follows Kubernetes best practices for production environments.\nFor detailed information about resource optimization and pod distribution, refer to the companion guide: Optimizing Resource Limits for Pod Distribution for ArgoCD.\n",
+  "wordCount" : "866",
+  "inLanguage": "en",
+  "datePublished": "2025-04-27T00:00:00Z",
+  "dateModified": "2025-04-27T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/posts/argocd-guide/setting-up-argocd-in-your-kubernetes-cluster/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Just a Guy, from Kenya",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
 
 <body class="" id="top">

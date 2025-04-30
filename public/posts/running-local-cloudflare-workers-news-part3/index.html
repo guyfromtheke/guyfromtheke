@@ -4,7 +4,7 @@
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>Running Local Cloudflare Workers to Gather News Information - Part 3 | Just a Guy, from Kenya</title>
 <meta name="keywords" content="cloudflare, workers, web scraping, typescript, serverless">
 <meta name="description" content="Introduction
@@ -64,7 +64,85 @@ One of the biggest challenges in web scraping is handling website changes. News 
         }
 
     </style>
-</noscript>
+</noscript><meta property="og:url" content="http://localhost:1313/posts/running-local-cloudflare-workers-news-part3/">
+  <meta property="og:site_name" content="Just a Guy, from Kenya">
+  <meta property="og:title" content="Running Local Cloudflare Workers to Gather News Information - Part 3">
+  <meta property="og:description" content="Introduction In the first part of this series, we explored the basics of Cloudflare Workers and set up our project. The second part covered core implementation details like cookie management and article parsing.
+Now, in this final installment, we’ll dive into the advanced features that make our news scraping worker robust and maintainable:
+Multiple pattern matching techniques for resilient scraping Comprehensive debugging endpoints Deployment strategies and maintenance considerations Multiple Pattern Matching for Robust Scraping One of the biggest challenges in web scraping is handling website changes. News sites frequently update their layouts and HTML structure, which can break simple scraping approaches. To build a resilient solution, I implemented a multi-tiered approach to article extraction.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-04-07T22:54:51+03:00">
+    <meta property="article:modified_time" content="2025-04-07T22:54:51+03:00">
+    <meta property="article:tag" content="Cloudflare">
+    <meta property="article:tag" content="Workers">
+    <meta property="article:tag" content="Web Scraping">
+    <meta property="article:tag" content="Typescript">
+    <meta property="article:tag" content="Serverless">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Running Local Cloudflare Workers to Gather News Information - Part 3">
+<meta name="twitter:description" content="Introduction
+In the first part of this series, we explored the basics of Cloudflare Workers and set up our project. The second part covered core implementation details like cookie management and article parsing.
+Now, in this final installment, we&rsquo;ll dive into the advanced features that make our news scraping worker robust and maintainable:
+
+Multiple pattern matching techniques for resilient scraping
+Comprehensive debugging endpoints
+Deployment strategies and maintenance considerations
+
+Multiple Pattern Matching for Robust Scraping
+One of the biggest challenges in web scraping is handling website changes. News sites frequently update their layouts and HTML structure, which can break simple scraping approaches. To build a resilient solution, I implemented a multi-tiered approach to article extraction.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Running Local Cloudflare Workers to Gather News Information - Part 3",
+      "item": "http://localhost:1313/posts/running-local-cloudflare-workers-news-part3/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Running Local Cloudflare Workers to Gather News Information - Part 3",
+  "name": "Running Local Cloudflare Workers to Gather News Information - Part 3",
+  "description": "Introduction In the first part of this series, we explored the basics of Cloudflare Workers and set up our project. The second part covered core implementation details like cookie management and article parsing.\nNow, in this final installment, we\u0026rsquo;ll dive into the advanced features that make our news scraping worker robust and maintainable:\nMultiple pattern matching techniques for resilient scraping Comprehensive debugging endpoints Deployment strategies and maintenance considerations Multiple Pattern Matching for Robust Scraping One of the biggest challenges in web scraping is handling website changes. News sites frequently update their layouts and HTML structure, which can break simple scraping approaches. To build a resilient solution, I implemented a multi-tiered approach to article extraction.\n",
+  "keywords": [
+    "cloudflare", "workers", "web scraping", "typescript", "serverless"
+  ],
+  "articleBody": "Introduction In the first part of this series, we explored the basics of Cloudflare Workers and set up our project. The second part covered core implementation details like cookie management and article parsing.\nNow, in this final installment, we’ll dive into the advanced features that make our news scraping worker robust and maintainable:\nMultiple pattern matching techniques for resilient scraping Comprehensive debugging endpoints Deployment strategies and maintenance considerations Multiple Pattern Matching for Robust Scraping One of the biggest challenges in web scraping is handling website changes. News sites frequently update their layouts and HTML structure, which can break simple scraping approaches. To build a resilient solution, I implemented a multi-tiered approach to article extraction.\nThe Problem with Single Pattern Matching Initially, I used a simple regex pattern to extract articles:\nconst articleRegex = /(.*?)\u003c\\/a\u003e/g; This worked fine until the site changed their HTML structure, causing the worker to return zero results. Instead of constantly updating the regex when the site changes, I implemented a more robust approach.\nImplementing Multiple Pattern Strategy The core of this approach is a function called tryMultiplePatterns that attempts several different extraction methods in succession:\nasync function tryMultiplePatterns(html: string, env: Env): Promise\u003c{ title: string; url: string }[]\u003e { // Store sample data for debugging await env.KV.put(\"debug_html_sample\", html.substring(0, 10000)); await env.KV.put(\"debug_timestamp\", new Date().toISOString()); // Try multiple approaches to extract articles... } The function includes three distinct approaches:\nArticle Element Parsing: First, it tries to find all elements and extract title/URL pairs from them H3 Teaser Parsing: If that fails, it looks for heading elements with specific classes Broad Pattern Fallback: As a last resort, it uses a more general pattern to capture content Here’s how the first approach looks:\n// Find all article elements const articleElements = []; const articleRegex = /]*\u003e([\\s\\S]*?)\u003c\\/article\u003e/gi; let articleMatch; while ((articleMatch = articleRegex.exec(html)) !== null) { articleElements.push(articleMatch[0]); } // Process each article element for (const articleHtml of articleElements) { try { // Extract URL and title from the article element const urlMatch = articleHtml.match(/]*href=\"([^\"]*)\"[^\u003e]*\u003e/); if (!urlMatch) continue; const titleMatch = articleHtml.match(/]*\u003e([\\s\\S]*?)\u003c\\/h3\u003e/); if (!titleMatch) continue; // Clean up the title... articles.push({ url: urlMatch[1].startsWith(\"http\") ? urlMatch[1] : `https://nation.africa${urlMatch[1]}`, title: title }); } catch (error) { console.error(\"Error processing article element:\", error); } } Post-Processing for Quality Results After extracting articles with any of the methods, I apply additional filtering to ensure quality results:\n// Filter out navigation links const filteredArticles = articles.filter(article =\u003e { // Skip navigation links which typically contain just a single word or section name const isNavigationLink = article.title.trim().split(/\\s+/).length \u003c= 2 \u0026\u0026 (article.url.includes(\"/news/\") || article.url.includes(\"/section/\") || article.url.includes(\"/category/\")); return !isNavigationLink; }); // Remove duplicates by URL const uniqueArticles = Array.from( new Map(filteredArticles.map(article =\u003e [article.url, article])).values() ); This multi-pattern approach with post-processing ensures that our worker continues to extract articles even when the site undergoes design changes. If one pattern fails, another will likely succeed.\nComprehensive Debugging Endpoints For a production service, especially one that runs on a schedule, having robust debugging capabilities is crucial. I implemented several endpoints to help diagnose issues without having to deploy new code.\nDebug Endpoint The most powerful debugging feature is a dedicated /debug endpoint that provides comprehensive information about the current state:\nif (url.pathname === \"/debug\") { try { const cookie = await getSessionCookie(env); console.log(\"Using cookie (first 30 chars):\", cookie.substring(0, 30) + \"...\"); const response = await fetch(NEWS_URL, { headers: { \"Cookie\": cookie, \"User-Agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36\" }, }); console.log(\"Article fetch response status:\", response.status); if (!response.ok) { const text = await response.text(); console.error(\"Error response preview:\", text.substring(0, 200) + \"...\"); throw new Error(`Failed to fetch articles: ${response.status}`); } const html = await response.text(); const articles = await tryMultiplePatterns(html, env); return new Response(JSON.stringify({ status: \"success\", articleCount: articles.length, articles: articles, debugInfo: { responseStatus: response.status, htmlLength: html.length, timestamp: new Date().toISOString() } }), { status: 200, headers: { \"Content-Type\": \"application/json\" }, }); } catch (error) { return new Response(JSON.stringify({ error: \"Debug failed\", details: error.message }), { status: 500, headers: { \"Content-Type\": \"application/json\" } }); } } This endpoint not only fetches and processes articles but also returns detailed diagnostic information including:\nResponse status from the news site Number of articles found Full article data HTML length Timestamp of the request Storing Debug Information in KV In addition to the real-time debug endpoint, I store samples of key data in KV storage for later analysis:\n// Store a sample of the HTML in KV for debugging await env.KV.put(\"debug_html_sample\", html.substring(0, 10000)); await env.KV.put(\"debug_timestamp\", new Date().toISOString()); // Store h3 samples for debugging const h3Tags = html.match(/]*\u003e.*?\u003c\\/h3\u003e/gs) || []; await env.KV.put(\"debug_h3_samples\", h3Tags.slice(0, 10).join('\\n\\n')); // Store some article elements for debugging await env.KV.put(\"debug_article_elements\", articleElements.slice(0, 5).join('\\n\\n---\\n\\n')); await env.KV.put(\"debug_article_count\", articleElements.length.toString()); // Store extracted articles await env.KV.put(\"debug_extracted_articles\", JSON.stringify({ count: articles.length, articles: articles.slice(0, 20) // Store first 20 articles for debugging })); This approach creates a historical record that can be examined if issues arise later, even if they’re intermittent or cannot be reproduced on demand.\nDeployment and Maintenance Considerations Running a Cloudflare Worker in production requires careful thought about deployment, monitoring, and maintenance.\nDeployment Strategy For deploying the worker, I use Wrangler’s deployment capabilities:\n# Deploy to production wrangler deploy However, to ensure reliable deployments, I’ve implemented a few best practices:\nVersion Control: All changes are committed to git before deployment Environment Variables: Sensitive information is stored as environment variables or KV entries Testing: Local testing before deployment using wrangler dev Monitoring and Alerting Cloudflare provides basic monitoring for Workers, but for more comprehensive monitoring, consider:\nSetting up status checks that ping your worker endpoints Implementing a logging service to capture console logs Creating a dashboard for KV storage status I’ve implemented simple self-monitoring through KV storage timestamps that track when the worker last ran successfully.\nCookie Management Maintenance The most maintenance-intensive part of this worker is cookie management. Since cookies expire and login methods can change, I’ve separated this concern:\nExternal Cookie Management: Using a separate extract-cookies.js script for refreshing cookies Cookie Expiration Checks: Regular checks to warn about soon-to-expire cookies Manual Refresh Process: Documented steps for updating cookies when needed Here’s the workflow I use for cookie maintenance:\n1. Run the extract-cookies.js script locally: node extract-cookies.js 2. The script: - Opens a headless browser - Navigates to the login page - Completes authentication - Extracts cookies - Updates the Worker's KV storage 3. Verify with the /cookie-status endpoint This separation of concerns makes maintenance more manageable, as the cookie extraction process can be updated independently of the worker logic.\nHandling Site Changes News sites change frequently, and here’s my strategy for dealing with that:\nMonitor Extraction Results: Set up regular checks of article count Update Patterns as Needed: If extraction fails, add new patterns to the tryMultiplePatterns function Resilient Design: The multiple-pattern approach often adapts automatically Cost Considerations Cloudflare Workers offers generous free tier limits, but it’s good to be aware of usage:\n100,000 requests per day on the free plan 10ms CPU time per request (adequate for our parsing needs) KV storage limits (1GB storage, 100,000 reads/day, 1,000 writes/day) Our implementation uses minimal resources, scheduling runs only every 12 hours, keeping us well within free tier limits.\nConclusion Throughout this series, we’ve built a robust Cloudflare Worker that reliably collects news headlines from Nation Africa. We’ve implemented:\nA solid foundation with proper configuration and environment setup Reliable cookie management and article parsing Multiple pattern matching for resilience against site changes Comprehensive debugging capabilities Sensible deployment and maintenance practices This approach can be adapted to many other web scraping tasks where you need reliable, scheduled data collection with minimal maintenance overhead.\nThe complete code is available in my GitHub repository, and I hope this series has provided you with insights into building and maintaining serverless web scrapers using Cloudflare Workers.\nHappy coding!\n",
+  "wordCount" : "1286",
+  "inLanguage": "en",
+  "datePublished": "2025-04-07T22:54:51+03:00",
+  "dateModified": "2025-04-07T22:54:51+03:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/posts/running-local-cloudflare-workers-news-part3/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Just a Guy, from Kenya",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
 
 <body class="" id="top">

@@ -4,7 +4,7 @@
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>Secure Kubernetes Cluster Upgrades: A Step-by-Step Guide | Just a Guy, from Kenya</title>
 <meta name="keywords" content="kubernetes, devops, security, automation, k3s">
 <meta name="description" content="Secure Kubernetes Cluster Upgrades: A Step-by-Step Guide
@@ -73,7 +73,94 @@ The first step was to establish secure, password-less authentication using SSH k
         }
 
     </style>
-</noscript>
+</noscript><meta property="og:url" content="http://localhost:1313/posts/secure-kubernetes-cluster-upgrades/">
+  <meta property="og:site_name" content="Just a Guy, from Kenya">
+  <meta property="og:title" content="Secure Kubernetes Cluster Upgrades: A Step-by-Step Guide">
+  <meta property="og:description" content="Secure Kubernetes Cluster Upgrades: A Step-by-Step Guide In this post, I’ll document a recent Kubernetes cluster upgrade process I implemented, focusing on security, automation, and best practices. I’ll walk through the entire process from environment assessment to verification, highlighting challenges and solutions along the way.
+Environment Overview Our setup consisted of a small K3s Kubernetes cluster running on Ubuntu 24.04 with:
+1 master node (control plane) 2 worker nodes All nodes running an older kernel version (6.8.0-56-generic) Multiple security updates pending Upgrade Objectives Update all system packages across all nodes Apply kernel updates securely Minimize downtime by implementing a rolling upgrade Establish secure automation for future upgrades Step 1: Setting Up Secure Access The first step was to establish secure, password-less authentication using SSH keys instead of using plaintext passwords.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-04-15T04:26:00+03:00">
+    <meta property="article:modified_time" content="2025-04-15T04:26:00+03:00">
+    <meta property="article:tag" content="Kubernetes">
+    <meta property="article:tag" content="Devops">
+    <meta property="article:tag" content="Security">
+    <meta property="article:tag" content="Automation">
+    <meta property="article:tag" content="K3s">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Secure Kubernetes Cluster Upgrades: A Step-by-Step Guide">
+<meta name="twitter:description" content="Secure Kubernetes Cluster Upgrades: A Step-by-Step Guide
+In this post, I&rsquo;ll document a recent Kubernetes cluster upgrade process I implemented, focusing on security, automation, and best practices. I&rsquo;ll walk through the entire process from environment assessment to verification, highlighting challenges and solutions along the way.
+Environment Overview
+Our setup consisted of a small K3s Kubernetes cluster running on Ubuntu 24.04 with:
+
+1 master node (control plane)
+2 worker nodes
+All nodes running an older kernel version (6.8.0-56-generic)
+Multiple security updates pending
+
+Upgrade Objectives
+
+Update all system packages across all nodes
+Apply kernel updates securely
+Minimize downtime by implementing a rolling upgrade
+Establish secure automation for future upgrades
+
+Step 1: Setting Up Secure Access
+The first step was to establish secure, password-less authentication using SSH keys instead of using plaintext passwords.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Secure Kubernetes Cluster Upgrades: A Step-by-Step Guide",
+      "item": "http://localhost:1313/posts/secure-kubernetes-cluster-upgrades/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Secure Kubernetes Cluster Upgrades: A Step-by-Step Guide",
+  "name": "Secure Kubernetes Cluster Upgrades: A Step-by-Step Guide",
+  "description": "Secure Kubernetes Cluster Upgrades: A Step-by-Step Guide In this post, I\u0026rsquo;ll document a recent Kubernetes cluster upgrade process I implemented, focusing on security, automation, and best practices. I\u0026rsquo;ll walk through the entire process from environment assessment to verification, highlighting challenges and solutions along the way.\nEnvironment Overview Our setup consisted of a small K3s Kubernetes cluster running on Ubuntu 24.04 with:\n1 master node (control plane) 2 worker nodes All nodes running an older kernel version (6.8.0-56-generic) Multiple security updates pending Upgrade Objectives Update all system packages across all nodes Apply kernel updates securely Minimize downtime by implementing a rolling upgrade Establish secure automation for future upgrades Step 1: Setting Up Secure Access The first step was to establish secure, password-less authentication using SSH keys instead of using plaintext passwords.\n",
+  "keywords": [
+    "kubernetes", "devops", "security", "automation", "k3s"
+  ],
+  "articleBody": "Secure Kubernetes Cluster Upgrades: A Step-by-Step Guide In this post, I’ll document a recent Kubernetes cluster upgrade process I implemented, focusing on security, automation, and best practices. I’ll walk through the entire process from environment assessment to verification, highlighting challenges and solutions along the way.\nEnvironment Overview Our setup consisted of a small K3s Kubernetes cluster running on Ubuntu 24.04 with:\n1 master node (control plane) 2 worker nodes All nodes running an older kernel version (6.8.0-56-generic) Multiple security updates pending Upgrade Objectives Update all system packages across all nodes Apply kernel updates securely Minimize downtime by implementing a rolling upgrade Establish secure automation for future upgrades Step 1: Setting Up Secure Access The first step was to establish secure, password-less authentication using SSH keys instead of using plaintext passwords.\n# Generate a secure ED25519 SSH key ssh-keygen -t ed25519 -f ~/.ssh/k8s_worker_access -C \"k8s_worker_automation_$(date +%Y%m%d)\" -N \"\" # Set up the automation directory structure mkdir -p ~/k8s-automation/inventory ~/k8s-automation/scripts # Create an inventory of worker nodes cat \u003c\u003c EOF \u003e ~/k8s-automation/inventory/workers.txt 10.10.10.xx 10.10.10.yy EOF Step 2: Setting Up the Upgrade Script I created an upgrade script that would:\nSafely drain each node before updates Apply system updates Handle required reboots Verify the node is ready before proceeding to the next one #!/bin/bash SSH_KEY=\"/root/.ssh/k8s_worker_access\" declare -A NODE_MAP NODE_MAP[\"10.10.10.xx\"]=\"uk8s-worker\" NODE_MAP[\"10.10.10.yy\"]=\"uk8s-worker2\" while IFS= read -r worker_ip; do node_name=\"${NODE_MAP[$worker_ip]}\" echo \"Processing worker: $worker_ip (Kubernetes node: $node_name)\" # Drain the node kubectl drain \"$node_name\" --ignore-daemonsets --delete-emptydir-data --force # Perform upgrade ssh -i \"$SSH_KEY\" -o StrictHostKeyChecking=no \"root@${worker_ip}\" ' export DEBIAN_FRONTEND=noninteractive apt-get update apt-get upgrade -y apt-get autoremove -y apt-get clean ' # Reboot if necessary ssh -i \"$SSH_KEY\" \"root@${worker_ip}\" ' if [ -f /var/run/reboot-required ]; then echo \"Rebooting node...\" nohup bash -c \"sleep 2; reboot\" \u0026 exit fi ' # Wait for node to come back echo \"Waiting for node to be ready...\" sleep 30 kubectl wait --for=condition=ready \"node/${node_name}\" --timeout=300s # Uncordon the node kubectl uncordon \"$node_name\" echo \"Node $worker_ip ($node_name) has been upgraded and is ready\" done \u003c \"/root/k8s-automation/inventory/workers.txt\" Step 3: Distributing SSH Keys Securely With the automation script prepared, I securely distributed the SSH keys to all nodes:\n# Install sshpass for initial key distribution apt-get install -y sshpass # Distribute keys to each worker node for worker in $(cat ~/k8s-automation/inventory/workers.txt); do echo \"Distributing SSH key to $worker\" sshpass -p \"[REDACTED]\" ssh-copy-id -i ~/.ssh/k8s_worker_access.pub \\ -o StrictHostKeyChecking=no \"root@${worker}\" done Step 4: Upgrading Worker Nodes With everything prepared, I proceeded with the worker node upgrades. The process was executed in a sequential manner to ensure cluster stability:\n# Execute the upgrade script ~/k8s-automation/scripts/upgrade-workers.sh During the upgrade process:\nEach worker node was cordoned and drained All system packages were updated (approximately 36 packages including security updates) New kernel (6.8.0-57-generic) was installed Nodes were rebooted where required The script waited for the node to rejoin the cluster The node was uncordoned before moving to the next node This approach ensured that:\nThe cluster maintained availability throughout the upgrade Workloads were properly rescheduled No manual intervention was required once the process started Step 5: Upgrading the Master Node The master node required special attention as it hosts the control plane components:\nI cordoned the master node to prevent new workloads but did not drain it Checked for pending updates Applied the updates Monitored the reboot process # Cordon the master node kubectl cordon uk8s-master # Check for updates ssh -i ~/.ssh/k8s_worker_access root@10.10.10.zz 'apt list --upgradable' # In this case, the master node had fewer pending updates (only 4 packages) # compared to the worker nodes (36 packages) as it had been patched more recently # Apply updates ssh -i ~/.ssh/k8s_worker_access root@10.10.10.zz ' export DEBIAN_FRONTEND=noninteractive apt-get update \u0026\u0026 \\ apt-get upgrade -y \u0026\u0026 \\ apt-get autoremove -y \u0026\u0026 \\ apt-get clean \u0026\u0026 \\ if [ -f /var/run/reboot-required ]; then echo \"Reboot required - proceeding with reboot\" nohup bash -c \"sleep 2; reboot\" \u0026 exit fi ' Challenges Faced \u0026 Solutions Challenge 1: Kubernetes API Unavailability During Master Reboot When the master node rebooted, the Kubernetes API became temporarily unavailable. This was expected, but it required proper handling.\nSolution: I added logic to wait for the API to become available again and implemented a retry mechanism.\nChallenge 2: Kernel Module Loading After Reboot After rebooting the master node with the new kernel, there were issues with IP tables modules not being loaded correctly.\nSolution: I explicitly loaded the required kernel modules and restarted the K3s service:\nssh root@10.10.10.zz ' modprobe ip_tables \u0026\u0026 modprobe iptable_nat \u0026\u0026 modprobe iptable_filter \u0026\u0026 modprobe xt_mark \u0026\u0026 systemctl restart k3s ' Challenge 3: Kubectl Configuration The kubectl configuration needed to be updated to connect to the master node after reboot.\nSolution: I retrieved the updated configuration from the master node and adjusted it:\nssh root@10.10.10.zz 'cat /etc/rancher/k3s/k3s.yaml' \u003e ~/.kube/config.new sed -i \"s/127.0.0.1/10.10.10.zz/\" ~/.kube/config.new export KUBECONFIG=~/.kube/config.new # Make this configuration persistent cp ~/.kube/config.new ~/.kube/config Verification After completing all upgrades, I verified the status of the cluster:\n$ kubectl get nodes -o wide NAME STATUS ROLES AGE VERSION INTERNAL-IP OS-IMAGE KERNEL-VERSION uk8s-master Ready control-plane,master 44d v1.31.6+k3s1 10.10.10.zz Ubuntu 24.04.2 LTS 6.8.0-57-generic uk8s-worker Ready worker 44d v1.31.6+k3s1 10.10.10.xx Ubuntu 24.04.2 LTS 6.8.0-57-generic uk8s-worker2 Ready worker 44d v1.31.6+k3s1 10.10.10.yy Ubuntu 24.04.2 LTS 6.8.0-57-generic All nodes were successfully upgraded with:\nLatest system packages New kernel version (6.8.0-57-generic) All nodes in Ready state Cluster fully operational Best Practices \u0026 Lessons Learned Security First: Never use plaintext passwords; always use SSH keys for automation Backup Before Upgrading: Always ensure you have proper backups before starting Rolling Updates: Upgrade one node at a time to maintain cluster availability Proper Draining: Always drain nodes properly before maintenance Master Node Care: Take extra precautions with the control plane node Recovery Plan: Have a plan for API unavailability during master node upgrades Kernel Module Awareness: Be prepared to load specific kernel modules after a kernel upgrade. Consider adding them to /etc/modules to load automatically on boot Validation: Always verify the cluster is healthy after each step Conclusion This upgrade process demonstrates a secure, automated approach to keeping Kubernetes clusters up-to-date with minimal downtime. By implementing proper SSH key authentication, creating reusable automation scripts, and following a methodical approach, future upgrades can be handled efficiently and securely.\nThe resulting cluster is now running the latest kernel and security patches, improving both performance and security. This process can be adapted for clusters of any size, making it a valuable addition to your operations playbook.\n",
+  "wordCount" : "1064",
+  "inLanguage": "en",
+  "datePublished": "2025-04-15T04:26:00+03:00",
+  "dateModified": "2025-04-15T04:26:00+03:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/posts/secure-kubernetes-cluster-upgrades/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Just a Guy, from Kenya",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
 
 <body class="" id="top">

@@ -4,7 +4,7 @@
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>Running Local Cloudflare Workers to Gather News Information - Part 2 | Just a Guy, from Kenya</title>
 <meta name="keywords" content="cloudflare, workers, web scraping, typescript, serverless">
 <meta name="description" content="Introduction
@@ -64,7 +64,85 @@ Many modern websites, including Nation Africa, use cookies for session managemen
         }
 
     </style>
-</noscript>
+</noscript><meta property="og:url" content="http://localhost:1313/posts/running-local-cloudflare-workers-news-part2/">
+  <meta property="og:site_name" content="Just a Guy, from Kenya">
+  <meta property="og:title" content="Running Local Cloudflare Workers to Gather News Information - Part 2">
+  <meta property="og:description" content="Introduction In Part 1, we covered the basics of Cloudflare Workers and set up our project. Now, let’s dive into the core implementation details that make our news gathering worker function.
+This post focuses on three crucial aspects:
+Cookie management for authenticated access Article fetching and parsing techniques Error handling and debugging strategies Cookie Management System Many modern websites, including Nation Africa, use cookies for session management and paywalls. To access full content, we need to maintain valid session cookies.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-04-07T22:53:51+03:00">
+    <meta property="article:modified_time" content="2025-04-07T22:53:51+03:00">
+    <meta property="article:tag" content="Cloudflare">
+    <meta property="article:tag" content="Workers">
+    <meta property="article:tag" content="Web Scraping">
+    <meta property="article:tag" content="Typescript">
+    <meta property="article:tag" content="Serverless">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Running Local Cloudflare Workers to Gather News Information - Part 2">
+<meta name="twitter:description" content="Introduction
+In Part 1, we covered the basics of Cloudflare Workers and set up our project. Now, let&rsquo;s dive into the core implementation details that make our news gathering worker function.
+This post focuses on three crucial aspects:
+
+Cookie management for authenticated access
+Article fetching and parsing techniques
+Error handling and debugging strategies
+
+Cookie Management System
+Many modern websites, including Nation Africa, use cookies for session management and paywalls. To access full content, we need to maintain valid session cookies.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Running Local Cloudflare Workers to Gather News Information - Part 2",
+      "item": "http://localhost:1313/posts/running-local-cloudflare-workers-news-part2/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Running Local Cloudflare Workers to Gather News Information - Part 2",
+  "name": "Running Local Cloudflare Workers to Gather News Information - Part 2",
+  "description": "Introduction In Part 1, we covered the basics of Cloudflare Workers and set up our project. Now, let\u0026rsquo;s dive into the core implementation details that make our news gathering worker function.\nThis post focuses on three crucial aspects:\nCookie management for authenticated access Article fetching and parsing techniques Error handling and debugging strategies Cookie Management System Many modern websites, including Nation Africa, use cookies for session management and paywalls. To access full content, we need to maintain valid session cookies.\n",
+  "keywords": [
+    "cloudflare", "workers", "web scraping", "typescript", "serverless"
+  ],
+  "articleBody": "Introduction In Part 1, we covered the basics of Cloudflare Workers and set up our project. Now, let’s dive into the core implementation details that make our news gathering worker function.\nThis post focuses on three crucial aspects:\nCookie management for authenticated access Article fetching and parsing techniques Error handling and debugging strategies Cookie Management System Many modern websites, including Nation Africa, use cookies for session management and paywalls. To access full content, we need to maintain valid session cookies.\nStoring Cookies in KV We use Cloudflare’s KV (Key-Value) store to persist cookies between worker invocations:\ninterface Env { KV: KVNamespace; // For session cookie storage ADMIN_KEY?: string; // Optional authentication key for refreshing cookies } async function getSessionCookie(env: Env): Promise\u003cstring\u003e { // Try to get the cookie from KV const cookie = await env.KV.get(\"session_cookie\"); if (!cookie) { throw new Error(\"Cookie not found. Run the extract-cookies.js script to update.\"); } // If the cookie is explicitly expired, warn but still use it if (isCookieExpired(cookie)) { console.warn(\"Warning: Cookie may be expired. Consider running extract-cookies.js.\"); } return cookie; } Checking Cookie Expiration To ensure we’re using valid cookies, I implemented a function to check cookie expiration:\nfunction isCookieExpired(cookie: string): boolean { // Extract expiration from cookie if it exists const expiresMatch = cookie.match(/expires=([^;]+)/i); if (!expiresMatch) return false; // Assume not expired if no expiration date const expiresDate = new Date(expiresMatch[1]); const now = new Date(); // If the cookie expires in less than 30 minutes, consider it expired const thirtyMinutesFromNow = new Date(now.getTime() + 30 * 60 * 1000); return expiresDate \u003c thirtyMinutesFromNow; } Cookie Refresh Process Instead of handling the login process directly in the worker (which could be complex and prone to breaking), I created a separate script extract-cookies.js that runs locally to refresh cookies.\nThe workflow is:\nRun the script locally which performs browser automation The script extracts fresh cookies from a successful login The cookies are uploaded to the Worker’s KV storage The Worker uses these cookies for subsequent requests This separation of concerns provides greater reliability and easier maintenance.\nArticle Fetching and Parsing The core functionality of our worker is fetching and parsing news articles from the target website.\nMaking Authenticated Requests To fetch article data, we make requests to the news site with our stored cookies:\nasync function fetchArticles(cookie: string): Promise\u003c{ title: string; url: string }[]\u003e { const response = await fetch(NEWS_URL, { headers: { \"Cookie\": cookie, // Add user agent to appear more like a regular browser \"User-Agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36\" }, }); if (!response.ok) { throw new Error(`Failed to fetch articles: ${response.status}`); } const html = await response.text(); // Parsing logic follows... } HTML Parsing with Regular Expressions For this project, I opted to use regular expressions for HTML parsing. While regex isn’t generally recommended for HTML parsing due to the complexity of HTML, it’s suitable for our targeted extraction needs and eliminates the need for heavy dependencies.\nHere’s a simplified version of the parsing logic:\nconst articleRegex = /]*)class=\"(?:[^\"]*?)(?:title|heading)(?:[^\"]*?)\"[^\u003e]*\u003e(?:\\s*)]*href=\"([^\"]*)\"[^\u003e]*\u003e(.*?)\u003c\\/a\u003e/gi; const articles: { title: string; url: string }[] = []; let match; while ((match = articleRegex.exec(html)) !== null) { const url = match[1].trim(); const title = match[2].replace(/\u003c[^\u003e]*\u003e/g, '').trim(); // Strip any HTML tags inside title articles.push({ url: url.startsWith(\"http\") ? url : `https://nation.africa${url}`, title: title, }); } This extracts article titles and URLs from heading elements that contain links.\nError Handling and Debugging Robust error handling is crucial for a production worker that runs on a schedule without direct supervision.\nComprehensive Error Handling Throughout the code, I’ve implemented try-catch blocks to prevent catastrophic failures:\nexport default { async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise\u003cResponse\u003e { try { // Worker logic here } catch (error) { console.error(\"Worker error:\", error.message); return new Response(JSON.stringify({ error: error.message }), { status: 500, headers: { \"Content-Type\": \"application/json\" }, }); } } } Status Endpoint To easily check the current state of our worker, I implemented a /cookie-status endpoint:\nif (url.pathname === \"/cookie-status\") { try { const cookie = await env.KV.get(\"session_cookie\"); const cookiePresent = !!cookie; const cookieLength = cookie ? cookie.length : 0; return new Response(JSON.stringify({ cookiePresent, cookieLength, lastUpdated: await env.KV.get(\"cookie_last_updated\") || \"unknown\", isExpired: cookie ? isCookieExpired(cookie) : true }), { status: 200, headers: { \"Content-Type\": \"application/json\" } }); } catch (error) { return new Response(JSON.stringify({ error: \"Failed to check cookie status\", details: error.message }), { status: 500, headers: { \"Content-Type\": \"application/json\" } }); } } This endpoint provides quick visibility into the state of our cookie storage, which is crucial for troubleshooting.\nLogging Cloudflare Workers supports console logging, which is helpful for monitoring and debugging:\nconsole.log(\"Scheduled task running at:\", new Date().toISOString()); console.log(\"Using cookie (first 30 chars):\", cookie.substring(0, 30) + \"...\"); console.log(\"Article fetch response status:\", response.status); console.log(`Found ${articles.length} articles`); These logs can be viewed in the Cloudflare Workers dashboard or with the Wrangler CLI during development.\nTesting the Worker Locally Before deployment, it’s essential to test the worker locally. Wrangler provides a development server:\nnpm run dev This starts a local server, typically at http://localhost:8787, where you can test your worker’s HTTP endpoints.\nFor scheduled events, you can trigger them manually with:\ncurl \"http://localhost:8787/__scheduled?cron=*+*+*+*+*\" Conclusion In this part, we’ve covered the core implementation details of our news gathering Cloudflare Worker:\nStoring and managing cookies in KV storage Fetching and parsing articles using regular expressions Implementing robust error handling and debugging endpoints These components form the backbone of our worker’s functionality.\nIn Part 3, we’ll explore advanced features and deployment considerations:\nMultiple pattern matching for robust article extraction Comprehensive debugging endpoints Deployment strategies and maintenance best practices Stay tuned for the final part of this series!\n",
+  "wordCount" : "933",
+  "inLanguage": "en",
+  "datePublished": "2025-04-07T22:53:51+03:00",
+  "dateModified": "2025-04-07T22:53:51+03:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/posts/running-local-cloudflare-workers-news-part2/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Just a Guy, from Kenya",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
 
 <body class="" id="top">
