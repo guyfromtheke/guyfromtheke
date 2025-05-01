@@ -2,12 +2,17 @@
 title: "Setting Up ArgoCD in Your Kubernetes Cluster"
 date: 2025-04-27
 draft: false
-description: "A comprehensive guide to installing and configuring ArgoCD in a Kubernetes environment"
+description: "My ongoing Notes on installing and configuring ArgoCD in a [my] Kubernetes environment"
 tags: ["kubernetes", "argocd", "gitops", "devops"]
 categories: ["Infrastructure", "Kubernetes"]
 series: ["GitOps Implementation"]
 weight: 1
 ---
+
+## Preamble
+
+This is my public open repository of how I've set up ( and continuing to setup up ) of Agro CD in my K8's homelab. 
+It also contains tips and tricks / commands that i have used to troubleshoot various issues. 
 
 ## What is ArgoCD?
 ArgoCD is a declarative, GitOps continuous delivery tool for Kubernetes. It automates the deployment of applications and helps maintain their desired state by continuously monitoring your Git repositories and ensuring your Kubernetes cluster matches the defined state in your Git configuration.
@@ -115,10 +120,10 @@ spec:
 
 ## Next Steps
 1. Change the default admin password
-2. Configure your Git repositories
-3. Set up your first application
-4. Implement SSO (optional)
-5. Configure RBAC policies
+2. Configure the Git repository
+3. Set up the first application
+4. Implement SSO (optional) **
+5. Configure RBAC policies **
 
 ## Advanced Configuration
 
@@ -182,7 +187,7 @@ argocd app get <application-name>
 argocd app sync <application-name> --debug
 ```
 
-## Extended Troubleshooting Guide
+## Troubleshooting AgroCD Guide
 
 ### Installation Issues
 
@@ -323,7 +328,7 @@ argocd app list
 - Network policies
 
 ## Conclusion
-This setup provides a robust foundation for GitOps-based deployments using ArgoCD. The configuration ensures secure access, proper isolation, and follows Kubernetes best practices for production environments.
+This setup provides a foundation for GitOps-based deployments using ArgoCD. The configuration ensures secure access, proper isolation, and follows Kubernetes best practices for production environments.
 
-For detailed information about resource optimization and pod distribution, refer to the companion guide: [Optimizing Resource Limits for Pod Distribution for ArgoCD]({{< ref "/posts/argocd-guide/optimizing-resource-limits-for-pod-distribution-for-argocd" >}}).
+For more detailed information about resource optimization and pod distribution, there's a companion guide: [Optimizing Resource Limits for Pod Distribution for ArgoCD]({{< ref "/posts/argocd-guide/optimizing-resource-limits-for-pod-distribution-for-argocd" >}}).
 
