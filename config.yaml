@@ -36,7 +36,7 @@ params:
       url: "https://www.linkedin.com/in/duncan-njoroge/"
     - name: reddit
       url: "https://www.reddit.com/user/guyfromtheke"
-    - name: mail
+    - name: gmail
       url: "mailto:kienjdu@gmail.com"
   cover:
     linkFullImages: true
@@ -62,10 +62,15 @@ menu:
       name: Archives
       url: /archives/
       weight: 30
+<<<<<<< HEAD
     - identifier: cv
       name: CV
       url: /cv/
       weight: 40
+=======
+
+
+>>>>>>> parent of 497a461 (feat: add CV redirect to digital portrait site)
 # enableInlineShortcodes: true
 # enableInlineShortcodes: true
 # enableRobotsTXT: true
