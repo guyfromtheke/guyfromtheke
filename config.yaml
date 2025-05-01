@@ -62,15 +62,6 @@ menu:
       name: Archives
       url: /archives/
       weight: 30
-<<<<<<< HEAD
-    - identifier: cv
-      name: CV
-      url: /cv/
-      weight: 40
-=======
-
-
->>>>>>> parent of 497a461 (feat: add CV redirect to digital portrait site)
 # enableInlineShortcodes: true
 # enableInlineShortcodes: true
 # enableRobotsTXT: true
