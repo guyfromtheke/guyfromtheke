@@ -5,7 +5,7 @@ draft: false
 description: "Optimizing ArgoCD deployment with proper resource management and high availability"
 tags: ["kubernetes", "argocd", "gitops", "devops", "optimization"]
 categories: ["Infrastructure", "Kubernetes"]
-series: ["GitOps " " Agro CD]
+series: ["GitOps ", "Agro CD"]
 weight: 2
 ---
 
