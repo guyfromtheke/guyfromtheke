@@ -5,7 +5,7 @@ draft: false
 weight: -100
 summary: "A detailed guide on upgrading a K3s Kubernetes cluster in my homelab from v1.31.6 to v1.32.3"
 tags: ["kubernetes", "homelab", "upgrade", "k3s"]
-categories: ["Infrastructure", "Kubernetes"]
+categories: ["Infrastructure", "Kubernetes", "K3S" ]
 featured: true
 ---
 
@@ -13,7 +13,7 @@ featured: true
 
 ## Introduction
 
-In this blog post, I'll share my experience upgrading a K3s Kubernetes cluster in a homelab environment from v1.31.6 to v1.32.3. This upgrade involved a master node and three worker nodes, presenting various challenges and learning opportunities along the way.
+In this blog post, I'll share my experience upgrading a K3s Kubernetes cluster in a homelab environment from v1.31.6 to v1.32.3. This upgrade involved a master node and three worker nodes, presenting various challenges and learning opportunities along the way. I'll also add to the fact that i upgraded my internal dns infrastructure so that i resolve all my nodes in my homelab to resolve to gftke.local domain 
 
 ## Environment Overview
 
@@ -41,7 +41,7 @@ The upgrade followed these key principles:
 ### Pre-upgrade Checks
 
 Before starting the upgrade, I performed several crucial checks:
-- Verified all nodes' status
+- Verified all nodes' status -> kubect get nodes -o wide 
 - Documented running workloads
 - Checked PersistentVolumes and Claims
 - Cleaned up any stale resources
@@ -149,10 +149,9 @@ k8s-worker3.gftke.local     Ready    <none>                 2d    v1.32.3+k3s1
 2. Document the current state of the cluster
 3. Have a rollback plan ready
 4. Test upgrade process on a non-critical node first
-5. Keep track of node tokens and FQDNs in a secure location
+5. Keep track of node tokens and FQDNs in a secure location.
 
 ## Conclusion
 
 While upgrading a Kubernetes cluster in a homelab environment presents unique challenges, following a systematic approach and being prepared for common issues makes the process manageable. The key is to maintain proper documentation, understand your environment's specifics, and have solutions ready for potential problems.
-
-This upgrade experience has helped establish a more robust process for future upgrades and highlighted the importance of proper DNS resolution and storage management in a Kubernetes environment.
+This upgrade experience has helped me establish a more robust process for future upgrades and highlighted the importance of proper DNS resolution and storage management in a Kubernetes environment.
