@@ -2,6 +2,11 @@
 title: "How I Managed Kubernetes Upgrade in My Homelab Environment"
 date: 2025-05-07
 draft: false
+weight: -100
+summary: "A detailed guide on upgrading a K3s Kubernetes cluster in my homelab from v1.31.6 to v1.32.3"
+tags: ["kubernetes", "homelab", "upgrade", "k3s"]
+categories: ["Infrastructure", "Kubernetes"]
+featured: true
 ---
 
 # How I Managed Kubernetes Upgrade in My Homelab Environment

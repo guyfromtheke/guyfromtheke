@@ -4,7 +4,7 @@ baseURL: "https://www.guyfromtheke.com/"
 title: "Just a Guy, from Kenya"
 copyright: "© [PaperMod Contributors](https://github.com/adityatelange/hugo-PaperMod/graphs/contributors)"
 pagination:
-  pagerSize: 5
+  pagerSize: 10
 theme: PaperMod
 mainSections: ["posts"]
 
@@ -21,6 +21,14 @@ ignoreLogs:
 params:
   env: production  # Enable production mode for template processing
   comments: true
+  frontmatter:
+    date:
+      - :filename
+      - :default
+    lastmod:
+      - lastmod
+      - :fileModTime
+      - :default
   homeInfoParams:
     Title: "I'm @guyfromtheke 🇰🇪"
     Content: >
