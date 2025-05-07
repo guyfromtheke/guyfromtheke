@@ -1,3 +1,9 @@
+---
+title: "How I Managed Kubernetes Upgrade in My Homelab Environment"
+date: 2025-05-07
+draft: false
+---
+
 # How I Managed Kubernetes Upgrade in My Homelab Environment
 
 ## Introduction
