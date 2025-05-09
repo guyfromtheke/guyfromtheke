@@ -54,13 +54,13 @@ params:
       url: "https://www.reddit.com/user/guyfromtheke"
     - name: gmail
       url: "mailto:kienjdu@gmail.com"
-    - name: youtube
-      url: "https://www.youtube.com/@guyfromtheke"
-    - name: devto
-      url: "https://dev.to/guyfromtheke"
+#    - name: youtube
+#      url: "https://www.youtube.com/@guyfromtheke"
+#    - name: devto
+#      url: "https://dev.to/guyfromtheke"
     - name: discord
       url: "https://discord.gg/guyfromtheke"
-      
+
   cover:
     linkFullImages: true
 
