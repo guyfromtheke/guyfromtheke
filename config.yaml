@@ -29,6 +29,14 @@ params:
       - lastmod
       - :fileModTime
       - :default
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 100
+    threshold: 0.2
+    minMatchCharLength: 3
+    keys: ["title", "permalink", "summary", "content"]
   homeInfoParams:
     Title: "I'm @guyfromtheke 🇰🇪"
     Content: >
@@ -166,11 +174,11 @@ buildFuture: true
 #         Title: "Hi there \U0001F44B"
 #         Content: Welcome to RTL layout
 
-# outputs:
-#   home:
-#     - HTML
-#     - RSS
-#     - JSON
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
 
 # params:
 #   env: production # to enable google analytics, opengraph, twitter-cards and schema.
