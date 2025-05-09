@@ -42,7 +42,7 @@ params:
     Content: >
       Welcome to my corner of the internet.
       
-      Check out my latest guides and articles below.
+      I am a infrastructure engineer with a passion for technology and a love for sharing knowledge. 
   socialIcons:
     - name: twitter
       url: "https://x.com/guyfromtheke"
@@ -54,6 +54,13 @@ params:
       url: "https://www.reddit.com/user/guyfromtheke"
     - name: gmail
       url: "mailto:kienjdu@gmail.com"
+    - name: youtube
+      url: "https://www.youtube.com/@guyfromtheke"
+    - name: devto
+      url: "https://dev.to/guyfromtheke"
+    - name: discord
+      url: "https://discord.gg/guyfromtheke"
+      
   cover:
     linkFullImages: true
 
